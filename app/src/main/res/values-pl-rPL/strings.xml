@@ -12,4 +12,5 @@
     <string name="phoneHint">Telefon</string>
     <string name="repasswordHint">Hasło</string>
     <string name="buttonRegister">Zarejestruj</string>
+    <string name="loginLabel">Masz już konto? Zaloguj się</string>
 </resources>

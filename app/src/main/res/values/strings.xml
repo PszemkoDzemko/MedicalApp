@@ -11,4 +11,5 @@
     <string name="phoneHint">Phone</string>
     <string name="repasswordHint">Password</string>
     <string name="buttonRegister">Register</string>
+    <string name="loginLabel">Alredy have account? Log In</string>
 </resources>

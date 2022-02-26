@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/nameRegisterInput"
+        android:id="@+id/nameRegisterForm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -32,10 +32,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:autofillHints="" />
 
     <EditText
-        android:id="@+id/mailRegisterInput"
+        android:id="@+id/mailRegisterForm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -47,10 +48,11 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/surnameRegisterInput" />
+        app:layout_constraintTop_toBottomOf="@+id/surnameRegisterForm"
+        android:autofillHints="" />
 
     <EditText
-        android:id="@+id/passwordRegisterInput"
+        android:id="@+id/passwordRegisterForm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -62,11 +64,12 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneRegisterInput"
-        tools:ignore="DuplicateSpeakableTextCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneRegisterForm"
+        tools:ignore="DuplicateSpeakableTextCheck"
+        android:autofillHints="" />
 
     <EditText
-        android:id="@+id/repasswordRegisterInput"
+        android:id="@+id/repasswordRegisterForm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -78,10 +81,11 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordRegisterInput" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordRegisterForm"
+        android:autofillHints="" />
 
     <EditText
-        android:id="@+id/surnameRegisterInput"
+        android:id="@+id/surnameRegisterForm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -93,10 +97,11 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameRegisterInput" />
+        app:layout_constraintTop_toBottomOf="@+id/nameRegisterForm"
+        android:autofillHints="" />
 
     <EditText
-        android:id="@+id/phoneRegisterInput"
+        android:id="@+id/phoneRegisterForm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -108,10 +113,11 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mailRegisterInput" />
+        app:layout_constraintTop_toBottomOf="@+id/mailRegisterForm"
+        android:autofillHints="" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/registerButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -120,6 +126,21 @@
         android:text="@string/buttonRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/repasswordRegisterInput" />
+        app:layout_constraintTop_toBottomOf="@+id/repasswordRegisterForm"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <TextView
+        android:id="@+id/toLoginLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/loginLabel"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
