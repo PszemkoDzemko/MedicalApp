@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Aplikacja Medyczna</string>
     <string name="loginText">Zaloguj Się</string>
-    <string name="passwordHint">Hasło</string>
+    <string name="passwordHint">Podaj hasło</string>
     <string name="mailHint">E-Mail</string>
     <string name="buttonLogin">Zaloguj</string>
     <string name="signinLabel">Nie masz jeszcze konta? Zarejestruj się</string>
@@ -10,7 +10,7 @@
     <string name="nameText">Imię</string>
     <string name="surnameText">Nazwisko</string>
     <string name="phoneHint">Telefon</string>
-    <string name="repasswordHint">Hasło</string>
+    <string name="repasswordHint">Podaj hasło ponownie</string>
     <string name="buttonRegister">Zarejestruj</string>
     <string name="loginLabel">Masz już konto? Zaloguj się</string>
 </resources>

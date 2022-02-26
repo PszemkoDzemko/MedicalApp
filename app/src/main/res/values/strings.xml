@@ -4,12 +4,12 @@
     <string name="passwordHint">Password</string>
     <string name="mailHint">E-Mail</string>
     <string name="buttonLogin">Log in</string>
-    <string name="signinLabel">Don\'t have an account yet?  Sign Up</string>
+    <string name="signinLabel">Don\'t have an account yet? Sign Up</string>
     <string name="registerLabel">Register</string>
     <string name="nameText">Name</string>
     <string name="surnameText">Surname</string>
     <string name="phoneHint">Phone</string>
-    <string name="repasswordHint">Password</string>
+    <string name="repasswordHint">Rewrite Password</string>
     <string name="buttonRegister">Register</string>
     <string name="loginLabel">Alredy have account? Log In</string>
 </resources>

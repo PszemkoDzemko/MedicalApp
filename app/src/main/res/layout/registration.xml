@@ -23,8 +23,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/nameText"
         android:inputType="textPersonName"
@@ -32,8 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
         android:id="@+id/mailRegisterForm"
@@ -75,6 +75,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/repasswordHint"
         android:inputType="textPassword"
@@ -82,7 +83,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordRegisterForm"
-        android:autofillHints="" />
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/surnameRegisterForm"
@@ -136,6 +137,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:minHeight="48dp"
         android:text="@string/loginLabel"
         android:textAlignment="center"
         android:textSize="16sp"
