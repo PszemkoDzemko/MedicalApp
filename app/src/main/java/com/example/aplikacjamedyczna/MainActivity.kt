@@ -12,5 +12,6 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
     val registerToLabel = findViewById<TextView>(R.id.toRegisterLabel)
+    val registerToLfsdfabel = findViewById<TextView>(R.id.toRegisterLabel)
 
 }
