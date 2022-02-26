@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aplikacja Medyczna</string>
+    <string name="logintext">Zaloguj Się</string>
+    <string name="passwordHint">Hasło</string>
+    <string name="mailHint">E-Mail</string>
+    <string name="buttonLogin">Zaloguj</string>
+</resources>

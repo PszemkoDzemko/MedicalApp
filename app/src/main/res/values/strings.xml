@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Medical Application</string>
+    <string name="logintext">Sign In</string>
+    <string name="passwordHint">Password</string>
+    <string name="mailHint">E-Mail</string>
+    <string name="buttonLogin">Log in</string>
+</resources>
