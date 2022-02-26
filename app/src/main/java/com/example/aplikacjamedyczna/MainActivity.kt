@@ -13,5 +13,5 @@ class MainActivity : AppCompatActivity() {
     }
     val registerToLabel = findViewById<TextView>(R.id.toRegisterLabel)
     val registerrToLabel = findViewById<TextView>(R.id.toRegisterLabel)
-
+    val registerrrToLabel = findViewById<TextView>(R.id.toRegisterLabel)
 }
