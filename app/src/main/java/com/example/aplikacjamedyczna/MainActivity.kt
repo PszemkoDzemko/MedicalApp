@@ -1,10 +1,13 @@
 package com.example.aplikacjamedyczna
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.example.aplikacjamedyczna.User.UserMainPage
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var validation: Validation
     private var errors=0
+    lateinit var sessionManager: SessionManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +27,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
 
+        sessionManager = SessionManager(applicationContext)
+        if(sessionManager.isLoggedIn()){
+            val intent = Intent(applicationContext,UserMainPage::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
+        }
         emailLoginForm = findViewById(R.id.emailLoginForm)
         passwordLoginForm = findViewById(R.id.passwordLoginForm)
         toRegisterText = findViewById(R.id.toRegisterLabel)
@@ -49,14 +61,15 @@ class MainActivity : AppCompatActivity() {
             errors++
         }
         if (!databaseHelper.checkUser(emailLoginForm.text.toString().trim(), passwordLoginForm.text.toString().trim())){
-            passwordLoginForm.setError("Błędny login lub hasło")
+            Toast.makeText(this@MainActivity, "Nazwa używtkownika lub hasło nieprawidłowe",Toast.LENGTH_LONG).show()
             errors++
         }
         if (errors == 0) {
-                val intentMainPage = Intent(applicationContext, UserMainPage::class.java)
-                startActivity(intentMainPage)
-                finish()
-            }
+            sessionManager.createLoginSession(emailLoginForm.text.toString().trim())
+            val intentMainPage = Intent(applicationContext, UserMainPage::class.java)
+            startActivity(intentMainPage)
+            finish()
+        }
         //else błąd nie udało się zalogować
     }
 }
