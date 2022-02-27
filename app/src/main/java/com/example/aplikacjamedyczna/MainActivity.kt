@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()
-        }
+        }//kurwa ale jestem zajebisty że to zrobiłem z 30 min się męczyłem nad tym bo else nie działa tak jak powinien xD
         if(sessionManager.isLoggedIn()){
             val intent = Intent(applicationContext,UserMainPage::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             } else {
-                Toast.makeText(this@MainActivity, "Nazwa używtkownika lub hasło nieprawidłowe", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@MainActivity, "Nazwa używtkownika lub hasło nieprawidłowe", Toast.LENGTH_LONG).show()//to wywala bład po zalogowaniu się jako doktor
             }
         }
     }
