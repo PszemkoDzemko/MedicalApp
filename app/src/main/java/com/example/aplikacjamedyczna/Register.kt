@@ -6,11 +6,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.aplikacjamedyczna.User.User
+import com.example.aplikacjamedyczna.doctor.DoctorRegister
+import com.example.aplikacjamedyczna.user.User
 
 class Register : AppCompatActivity() {
     private val activity = this@Register
     private lateinit var toLoginLabel: TextView
+    private lateinit var toDoctorRegister: TextView
     private lateinit var nameRegistraterForm: EditText
     private lateinit var surnameRegistraterForm: EditText
     private lateinit var mailRegistraterForm: EditText
@@ -26,17 +28,25 @@ class Register : AppCompatActivity() {
         setContentView(R.layout.registration)
         supportActionBar?.hide()
 
-        nameRegistraterForm = findViewById(R.id.nameRegisterForm)
-        surnameRegistraterForm = findViewById(R.id.surnameRegisterForm)
-        mailRegistraterForm = findViewById(R.id.mailRegisterForm)
-        phoneRegistraterForm =findViewById(R.id.phoneRegisterForm)
-        passwordRegistraterForm = findViewById(R.id.passwordRegisterForm)
-        repasswordRegistraterForm = findViewById(R.id.repasswordRegisterForm)
-        registerButton = findViewById(R.id.registerButton)
-        toLoginLabel = findViewById(R.id.toLoginLabel)
+        nameRegistraterForm = findViewById(R.id.doctorNameRegisterForm)
+        surnameRegistraterForm = findViewById(R.id.doctorSurnameRegisterForm)
+        mailRegistraterForm = findViewById(R.id.doctorMailRegisterForm)
+        phoneRegistraterForm = findViewById(R.id.doctorSpecializationRegisterForm)
+        passwordRegistraterForm = findViewById(R.id.doctorPasswordRegisterForm)
+        repasswordRegistraterForm = findViewById(R.id.doctopRepasswordRegisterForm)
+        registerButton = findViewById(R.id.doctorRegisterButton)
+        toLoginLabel = findViewById(R.id.backToRegister)
         databaseHelper = DatabaseHelper(activity)
         validation = Validation(activity)
+        toDoctorRegister= findViewById(R.id.toDoctorRegister)
 
+        toDoctorRegister.setOnClickListener {
+            val intent = Intent(applicationContext, DoctorRegister::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
+        }
         toLoginLabel.setOnClickListener {
             finish()
         }

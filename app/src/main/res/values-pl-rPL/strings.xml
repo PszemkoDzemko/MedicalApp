@@ -15,4 +15,9 @@
     <string name="loginLabel">Masz już konto? Zaloguj się</string>
     <string name="welcomeMessage">Witaj %1$s</string>
     <string name="logoutText">"Wyloguj się "</string>
+    <string name="searchHint">Wyszukaj</string>
+    <string name="doctorRegisterLabel">Lekarz? Dołącz tutaj</string>
+    <string name="backToLogin">Powrót do ekranu logowania</string>
+    <string name="doctorRegister">Zarejestruj jako lekarz</string>
+    <string name="doctorSpecializationHint">Specjalizacja</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.aplikacjamedyczna.User
+package com.example.aplikacjamedyczna.user
 
 import androidx.fragment.app.Fragment
 import com.example.aplikacjamedyczna.R

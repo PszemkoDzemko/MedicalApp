@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Register"/>
-        <activity android:name=".User.UserMainPage"/>
+        <activity android:name=".user.UserMainPage"/>
+        <activity android:name=".doctor.DoctorRegister"/>
     </application>
 </manifest>

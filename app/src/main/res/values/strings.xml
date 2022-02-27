@@ -14,7 +14,9 @@
     <string name="loginLabel">Alredy have account? Log In</string>
     <string name="welcomeMessage">Welcome %1$s</string>
     <string name="logoutText">Log Out</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="searchHint">Search</string>
+    <string name="doctorRegisterLabel">Doctor? SignUp here</string>
+    <string name="backToLogin">Back to login screen</string>
+    <string name="doctorRegister">Register as a Doctor</string>
+    <string name="doctorSpecializationHint">Specialization</string>
 </resources>

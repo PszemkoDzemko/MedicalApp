@@ -1,12 +1,9 @@
-package com.example.aplikacjamedyczna.User
+package com.example.aplikacjamedyczna.user
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
 import com.example.aplikacjamedyczna.R
 import com.example.aplikacjamedyczna.SessionManager
 

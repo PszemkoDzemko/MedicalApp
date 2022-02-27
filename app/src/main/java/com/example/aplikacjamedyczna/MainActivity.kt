@@ -1,14 +1,12 @@
 package com.example.aplikacjamedyczna
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.example.aplikacjamedyczna.User.UserMainPage
+import com.example.aplikacjamedyczna.user.UserMainPage
 
 class MainActivity : AppCompatActivity() {
     private val activity = this@MainActivity
