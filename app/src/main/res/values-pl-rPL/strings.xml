@@ -13,4 +13,6 @@
     <string name="repasswordHint">Podaj hasło ponownie</string>
     <string name="buttonRegister">Zarejestruj</string>
     <string name="loginLabel">Masz już konto? Zaloguj się</string>
+    <string name="welcomeMessage">Witaj %1$s</string>
+    <string name="logoutText">"Wyloguj się "</string>
 </resources>

@@ -12,4 +12,6 @@
     <string name="repasswordHint">Rewrite Password</string>
     <string name="buttonRegister">Register</string>
     <string name="loginLabel">Alredy have account? Log In</string>
+    <string name="welcomeMessage">Welcome %1$s</string>
+    <string name="logoutText">Log Out</string>
 </resources>
