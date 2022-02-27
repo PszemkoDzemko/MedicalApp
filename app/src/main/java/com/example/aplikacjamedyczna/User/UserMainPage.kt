@@ -1,6 +1,7 @@
 package com.example.aplikacjamedyczna.User
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -11,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class UserMainPage : AppCompatActivity() {
     lateinit var sessionManager: SessionManager
     lateinit var searchInput: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mainuserpage)
@@ -22,6 +24,7 @@ class UserMainPage : AppCompatActivity() {
         val name: String = user.get(SessionManager.KEY_EMAIL)!!
 
         searchInput= findViewById(R.id.searchInput)
+
 
         val searchFragment = SearchFragment()
         searchInput.setOnClickListener {

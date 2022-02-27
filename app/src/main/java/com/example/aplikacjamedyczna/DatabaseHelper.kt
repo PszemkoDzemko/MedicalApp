@@ -25,7 +25,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
             ");")
 
-    private val CREATE_DOCTOR_TABLE =("")
+    private val CREATE_DOCTOR_TABLE =("CREATE TABLE \"doctors\" (\n" +
+            "\t\"id\"\tINTEGER,\n" +
+            "\t\"name\"\tTEXT,\n" +
+            "\t\"surname\"\tTEXT,\n" +
+            "\t\"specialization\"\tTEXT,\n" +
+            "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
+            ");")
 
     private val DROP_USER_TABLE = "DROP TABLE IF EXISTS $TABLE_USER"
 
@@ -62,6 +68,15 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         if(cursorCount>0)return true
 
         return false
+    }
+    fun addDoctor(doctor: Doctor){
+        val p0 = this.writableDatabase
+        val values = ContentValues()
+        values.put("name",doctor.name)
+        values.put("surname",doctor.surname)
+        values.put("specialization",doctor.specialozation)
+        p0.insert(TABLE_DOCTOR,null,values)
+        //p0.close()
     }
 
 
