@@ -8,8 +8,8 @@ import com.example.aplikacjamedyczna.R
 import com.example.aplikacjamedyczna.SessionManager
 
 class SecondFragment : Fragment(R.layout.fragment_second)  {
-    lateinit var logoutButton:Button
-    lateinit var sessionManager: SessionManager
+    private lateinit var logoutButton:Button
+    private lateinit var sessionManager: SessionManager
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

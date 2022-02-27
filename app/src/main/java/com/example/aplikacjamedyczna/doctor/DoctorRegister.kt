@@ -49,31 +49,31 @@ class DoctorRegister : AppCompatActivity() {
     private fun postDataToSQL() {
         errors=0
         if(!validation.nameValidation(doctorNameRegister.text.toString().trim())){
-            doctorNameRegister.setError("błąd kurwa jego zajebana mać")
+            doctorNameRegister.error = "błąd kurwa jego zajebana mać"
             errors++
         }
         if(!validation.surnameValidation(doctorSurnameRegister.text.toString().trim())){
-            doctorSurnameRegister.setError("błąd kurwa jego zajebana mać")
+            doctorSurnameRegister.error = "błąd kurwa jego zajebana mać"
             errors++
         }
         if(!validation.emailValidation(doctorEmailRegister.text.toString().trim())){
-            doctorEmailRegister.setError("błąd kurwa jego zajebana mać")
+            doctorEmailRegister.error = "błąd kurwa jego zajebana mać"
             errors++
         }
         if(!validation.phoneValidation(doctorSpecializationRegister.text.toString().trim())){
-            doctorSpecializationRegister.setError("błąd kurwa jego zajebana mać")
+            doctorSpecializationRegister.error = "błąd kurwa jego zajebana mać"
             errors++
         }
         if(!validation.passwordValidation(doctorPasswordRegister.text.toString().trim())){
-            doctorPasswordRegister.setError("błąd kurwa jego zajebana mać")
+            doctorPasswordRegister.error = "błąd kurwa jego zajebana mać"
             errors++
         }
         if(!validation.repasswordValidation(doctorRepasswordRegister.text.toString().trim())){
-            doctorRepasswordRegister.setError("błąd kurwa jego zajebana mać")
+            doctorRepasswordRegister.error = "błąd kurwa jego zajebana mać"
             errors++
         }
         if(!validation.matchPasswordValidation(doctorPasswordRegister.text.toString().trim(),doctorRepasswordRegister.text.toString().trim())){
-            doctorRepasswordRegister.setError("błąd kurwa jego zajebana mać")
+            doctorRepasswordRegister.error = "błąd kurwa jego zajebana mać"
             errors++
         }
         if(errors==0){

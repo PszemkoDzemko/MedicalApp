@@ -7,11 +7,11 @@ import android.database.sqlite.SQLiteOpenHelper
 import com.example.aplikacjamedyczna.doctor.Doctor
 import com.example.aplikacjamedyczna.user.User
 
-private val DATABASE_NAME = "Med"
-private val DATABASE_VERSION = 2
-private val TABLE_USER = "users"
-private val TABLE_DOCTOR = "doctors"
-private val COLUMN_USER_ID = "id"
+private const val DATABASE_NAME = "Med"
+private const val DATABASE_VERSION = 2
+private const val TABLE_USER = "users"
+private const val TABLE_DOCTOR = "doctors"
+private const val COLUMN_USER_ID = "id"
 
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION){

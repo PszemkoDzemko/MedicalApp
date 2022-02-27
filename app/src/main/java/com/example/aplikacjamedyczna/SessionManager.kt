@@ -3,11 +3,10 @@ package com.example.aplikacjamedyczna
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.provider.ContactsContract
 
 class SessionManager(var context: Context) {
-    var pref: SharedPreferences
-    var editor: SharedPreferences.Editor
+    private var pref: SharedPreferences
+    private var editor: SharedPreferences.Editor
     private var PRIVATE_MODE = 0
 
     init {

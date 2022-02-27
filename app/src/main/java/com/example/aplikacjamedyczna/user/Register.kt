@@ -60,27 +60,27 @@ class Register : AppCompatActivity() {
     private fun postDataToSQLite() {
         errors=0
         if (!validation.nameValidation(nameRegistraterForm.text.toString().trim())) {
-            nameRegistraterForm.setError("To pole nie może być puste")
+            nameRegistraterForm.error = "To pole nie może być puste"
             errors++
         }
         if (!validation.surnameValidation(surnameRegistraterForm.text.toString().trim())) {
-            surnameRegistraterForm.setError("To pole nie może być puste")
+            surnameRegistraterForm.error = "To pole nie może być puste"
             errors++
         }
         if (!validation.emailValidation(mailRegistraterForm.text.toString().trim())) {
-            mailRegistraterForm.setError("To pole nie może być puste")
+            mailRegistraterForm.error = "To pole nie może być puste"
             errors++
         }
         if (!validation.phoneValidation(phoneRegistraterForm.text.toString().trim())) {
-            phoneRegistraterForm.setError("To pole nie może być puste")
+            phoneRegistraterForm.error = "To pole nie może być puste"
             errors++
         }
         if (!validation.passwordValidation(passwordRegistraterForm.text.toString().trim())) {
-            passwordRegistraterForm.setError("To pole nie może być puste")
+            passwordRegistraterForm.error = "To pole nie może być puste"
             errors++
         }
         if (!validation.repasswordValidation(repasswordRegistraterForm.text.toString().trim())) {
-            repasswordRegistraterForm.setError("To pole nie może być puste")
+            repasswordRegistraterForm.error = "To pole nie może być puste"
             errors++
         }
         if (!validation.matchPasswordValidation(
@@ -88,7 +88,7 @@ class Register : AppCompatActivity() {
                 repasswordRegistraterForm.text.toString().trim()
             )
         ) {
-            repasswordRegistraterForm.setError("Hasła nie są identyczne")
+            repasswordRegistraterForm.error = "Hasła nie są identyczne"
             errors++
         }
         if (errors == 0) {
