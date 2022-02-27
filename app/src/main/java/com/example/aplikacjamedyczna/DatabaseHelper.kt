@@ -9,6 +9,7 @@ import com.example.aplikacjamedyczna.User.User
 private val DATABASE_NAME = "Med"
 private val DATABASE_VERSION = 1
 private val TABLE_USER = "users"
+private val TABLE_DOCTOR = "doctors"
 private val COLUMN_USER_ID = "id"
 
 
@@ -24,11 +25,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
             ");")
 
+    private val CREATE_DOCTOR_TABLE =("")
 
     private val DROP_USER_TABLE = "DROP TABLE IF EXISTS $TABLE_USER"
 
     override fun onCreate(p0: SQLiteDatabase) {
-            p0.execSQL(CREATE_USER_TABEL)
+        p0.execSQL(CREATE_USER_TABEL)
+        p0.execSQL(CREATE_DOCTOR_TABLE)
     }
 
     override fun onUpgrade(p0: SQLiteDatabase, p1: Int, p2: Int) {

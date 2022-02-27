@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/visitsMenu"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="@string/loginText"/>
+    <item
+        android:id="@+id/page_2"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/loginText"/>
+    <item
+        android:id="@+id/registerToVisitMenu"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="@string/logoutText"/>
+    <item
+        android:id="@+id/page_4"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/registerLabel"/>
+    <item
+        android:id="@+id/page_5"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="" />
+</menu>
