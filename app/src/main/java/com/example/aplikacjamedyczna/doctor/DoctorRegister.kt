@@ -22,6 +22,7 @@ class DoctorRegister : AppCompatActivity() {
     private lateinit var doctorRepasswordRegister: EditText
     private lateinit var doctorRegisterButton: Button
     private var errors=0
+    private var emptyError=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.doctor_register)
@@ -30,6 +31,7 @@ class DoctorRegister : AppCompatActivity() {
         databaseHelper = DatabaseHelper(activity)
         validation = Validation(activity)
 
+        emptyError = getString(R.string.emptyError)
         doctorNameRegister = findViewById(R.id.doctorNameRegisterForm)
         doctorSurnameRegister = findViewById(R.id.doctorSurnameRegisterForm)
         doctorSpecializationRegister = findViewById(R.id.doctorSpecializationRegisterForm)
@@ -49,31 +51,31 @@ class DoctorRegister : AppCompatActivity() {
     private fun postDataToSQL() {
         errors=0
         if(!validation.nameValidation(doctorNameRegister.text.toString().trim())){
-            doctorNameRegister.error = "błąd kurwa jego zajebana mać"
+            doctorNameRegister.error = emptyError
             errors++
         }
         if(!validation.surnameValidation(doctorSurnameRegister.text.toString().trim())){
-            doctorSurnameRegister.error = "błąd kurwa jego zajebana mać"
+            doctorSurnameRegister.error = emptyError
             errors++
         }
         if(!validation.emailValidation(doctorEmailRegister.text.toString().trim())){
-            doctorEmailRegister.error = "błąd kurwa jego zajebana mać"
+            doctorEmailRegister.error = emptyError
             errors++
         }
         if(!validation.phoneValidation(doctorSpecializationRegister.text.toString().trim())){
-            doctorSpecializationRegister.error = "błąd kurwa jego zajebana mać"
+            doctorSpecializationRegister.error = emptyError
             errors++
         }
         if(!validation.passwordValidation(doctorPasswordRegister.text.toString().trim())){
-            doctorPasswordRegister.error = "błąd kurwa jego zajebana mać"
+            doctorPasswordRegister.error = emptyError
             errors++
         }
         if(!validation.repasswordValidation(doctorRepasswordRegister.text.toString().trim())){
-            doctorRepasswordRegister.error = "błąd kurwa jego zajebana mać"
+            doctorRepasswordRegister.error = emptyError
             errors++
         }
         if(!validation.matchPasswordValidation(doctorPasswordRegister.text.toString().trim(),doctorRepasswordRegister.text.toString().trim())){
-            doctorRepasswordRegister.error = "błąd kurwa jego zajebana mać"
+            doctorRepasswordRegister.error = getString(R.string.notSamePasswordError)
             errors++
         }
         if(errors==0){

@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.example.aplikacjamedyczna.doctor.DoctorMainPage
 import com.example.aplikacjamedyczna.user.Register
 import com.example.aplikacjamedyczna.user.UserMainPage
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
     private val activity = this@MainActivity
@@ -19,9 +20,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var validation: Validation
     private var errors=0
+    var emptyError=""
     private lateinit var sessionManager: SessionManager
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
+        emptyError = getString(R.string.emptyError)
         emailLoginForm = findViewById(R.id.emailLoginForm)
         passwordLoginForm = findViewById(R.id.passwordLoginForm)
         toRegisterText = findViewById(R.id.toRegisterLabel)
@@ -61,11 +61,11 @@ class MainActivity : AppCompatActivity() {
     private fun login() {
         errors=0
         if (!validation.emailValidation(emailLoginForm.text.toString().trim())) {
-            emailLoginForm.error = "To pole nie może być puste"
+            emailLoginForm.error = emptyError
             errors++
         }
         if (!validation.passwordValidation(passwordLoginForm.text.toString().trim())) {
-            passwordLoginForm.error = "To pole nie może być puste"
+            passwordLoginForm.error = emptyError
             errors++
         }
         if (errors == 0) {
@@ -82,7 +82,8 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             } else {
-                Toast.makeText(this@MainActivity, "Nazwa używtkownika lub hasło nieprawidłowe", Toast.LENGTH_LONG).show()//to wywala bład po zalogowaniu się jako doktor
+                Toast.makeText(this@MainActivity, "Nazwa używtkownika lub hasło nieprawidłowe", Toast.LENGTH_LONG).show()
+            //to wywala bład po zalogowaniu się jako doktor, ale czemu nie wiem
             }
         }
     }

@@ -19,4 +19,6 @@
     <string name="backToLogin">Back to login screen</string>
     <string name="doctorRegister">Register as a Doctor</string>
     <string name="doctorSpecializationHint">Specialization</string>
+    <string name="emptyError">This field cannot be empty</string>
+    <string name="notSamePasswordError">Passwords are not the same</string>
 </resources>

@@ -25,11 +25,13 @@ class Register : AppCompatActivity() {
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var validation: Validation
     private var errors=0
+    private var emptyError=""
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.registration)
         supportActionBar?.hide()
 
+        emptyError = getString(R.string.emptyError)
         nameRegistraterForm = findViewById(R.id.doctorNameRegisterForm)
         surnameRegistraterForm = findViewById(R.id.doctorSurnameRegisterForm)
         mailRegistraterForm = findViewById(R.id.doctorMailRegisterForm)
@@ -60,27 +62,27 @@ class Register : AppCompatActivity() {
     private fun postDataToSQLite() {
         errors=0
         if (!validation.nameValidation(nameRegistraterForm.text.toString().trim())) {
-            nameRegistraterForm.error = "To pole nie może być puste"
+            nameRegistraterForm.error = emptyError
             errors++
         }
         if (!validation.surnameValidation(surnameRegistraterForm.text.toString().trim())) {
-            surnameRegistraterForm.error = "To pole nie może być puste"
+            surnameRegistraterForm.error = emptyError
             errors++
         }
         if (!validation.emailValidation(mailRegistraterForm.text.toString().trim())) {
-            mailRegistraterForm.error = "To pole nie może być puste"
+            mailRegistraterForm.error = emptyError
             errors++
         }
         if (!validation.phoneValidation(phoneRegistraterForm.text.toString().trim())) {
-            phoneRegistraterForm.error = "To pole nie może być puste"
+            phoneRegistraterForm.error = emptyError
             errors++
         }
         if (!validation.passwordValidation(passwordRegistraterForm.text.toString().trim())) {
-            passwordRegistraterForm.error = "To pole nie może być puste"
+            passwordRegistraterForm.error = emptyError
             errors++
         }
         if (!validation.repasswordValidation(repasswordRegistraterForm.text.toString().trim())) {
-            repasswordRegistraterForm.error = "To pole nie może być puste"
+            repasswordRegistraterForm.error = emptyError
             errors++
         }
         if (!validation.matchPasswordValidation(
@@ -88,7 +90,7 @@ class Register : AppCompatActivity() {
                 repasswordRegistraterForm.text.toString().trim()
             )
         ) {
-            repasswordRegistraterForm.error = "Hasła nie są identyczne"
+            repasswordRegistraterForm.error = getString(R.string.notSamePasswordError)
             errors++
         }
         if (errors == 0) {
