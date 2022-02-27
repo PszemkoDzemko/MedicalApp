@@ -9,7 +9,6 @@ import android.widget.Toast
 import com.example.aplikacjamedyczna.doctor.DoctorMainPage
 import com.example.aplikacjamedyczna.user.Register
 import com.example.aplikacjamedyczna.user.UserMainPage
-import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
     private val activity = this@MainActivity
@@ -69,21 +68,22 @@ class MainActivity : AppCompatActivity() {
             errors++
         }
         if (errors == 0) {
-            if (databaseHelper.checkDoctor(emailLoginForm.text.toString().trim(), passwordLoginForm.text.toString().trim())) {
-                sessionManager.createDoctorSession(emailLoginForm.text.toString().trim())
-                val intent = Intent(applicationContext, DoctorMainPage::class.java)
-                startActivity(intent)
-                finish()
-            }
-
-            if (databaseHelper.checkUser(emailLoginForm.text.toString().trim(), passwordLoginForm.text.toString().trim())) {
-                sessionManager.createUserSession(emailLoginForm.text.toString().trim())
-                val intent = Intent(applicationContext, UserMainPage::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                Toast.makeText(this@MainActivity, "Nazwa używtkownika lub hasło nieprawidłowe", Toast.LENGTH_LONG).show()
-            //to wywala bład po zalogowaniu się jako doktor, ale czemu nie wiem
+            when {
+                databaseHelper.checkUser(emailLoginForm.text.toString().trim(), passwordLoginForm.text.toString().trim()) -> {
+                    sessionManager.createUserSession(emailLoginForm.text.toString().trim())
+                    val intent = Intent(applicationContext, UserMainPage::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                databaseHelper.checkDoctor(emailLoginForm.text.toString().trim(), passwordLoginForm.text.toString().trim()) -> {
+                    sessionManager.createDoctorSession(emailLoginForm.text.toString().trim())
+                    val intent = Intent(applicationContext, DoctorMainPage::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                else -> {
+                    Toast.makeText(this@MainActivity, "Nazwa używtkownika lub hasło nieprawidłowe", Toast.LENGTH_LONG).show()
+                }
             }
         }
     }

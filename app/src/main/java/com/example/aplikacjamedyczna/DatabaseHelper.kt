@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import com.example.aplikacjamedyczna.doctor.Doctor
 import com.example.aplikacjamedyczna.user.User
 
@@ -68,6 +69,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val selectionArgs = arrayOf(email,password)
         val cursor = p0.query(TABLE_USER,columns, selection,selectionArgs,null,null,null)
         val cursorCount = cursor.count
+
         cursor.close()
         //p0.close() Odkomentuj to później
         if (cursorCount > 0) return true
@@ -83,22 +85,23 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         values.put("email",doctor.email)
         values.put("specialization",doctor.specialization)
         values.put("password",doctor.password)
-
         p0.insert(TABLE_DOCTOR,null,values)
         //p0.close() Odkomentuj to później
     }
 
-    fun checkDoctor(email: String,password: String):Boolean {
+    fun checkDoctor(email:String,password:String):Boolean {
         val columns = arrayOf(COLUMN_USER_ID)
         val p0 = this.readableDatabase
         val selection = "email = ? AND password = ?"
         val selectionArgs = arrayOf(email,password)
         val cursor = p0.query(TABLE_DOCTOR,columns, selection,selectionArgs,null,null,null)
         val cursorCount = cursor.count
+//      Log.e(email,"$cursorCount")
         cursor.close()
         //p0.close() Odkomentuj to później
-        if(cursorCount>0) return true
-        return true
+        if(cursorCount > 0) return true
+
+        return false
     }
 
 }
