@@ -1,4 +1,4 @@
-package com.example.aplikacjamedyczna
+package com.example.aplikacjamedyczna.user
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,8 +6,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.aplikacjamedyczna.DatabaseHelper
+import com.example.aplikacjamedyczna.R
+import com.example.aplikacjamedyczna.Validation
 import com.example.aplikacjamedyczna.doctor.DoctorRegister
-import com.example.aplikacjamedyczna.user.User
 
 class Register : AppCompatActivity() {
     private val activity = this@Register
