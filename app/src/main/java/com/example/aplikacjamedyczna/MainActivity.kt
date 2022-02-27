@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.aplikacjamedyczna.doctor.DoctorMainPage
 import com.example.aplikacjamedyczna.user.Register
 import com.example.aplikacjamedyczna.user.UserMainPage
 
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var validation: Validation
     private var errors=0
-    lateinit var sessionManager: SessionManager
+    private lateinit var sessionManager: SessionManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +28,13 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         sessionManager = SessionManager(applicationContext)
+        if(sessionManager.isDoctorLoggedIn()){
+            val intent = Intent(applicationContext,DoctorMainPage::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
+        }
         if(sessionManager.isLoggedIn()){
             val intent = Intent(applicationContext,UserMainPage::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -34,6 +42,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
         emailLoginForm = findViewById(R.id.emailLoginForm)
         passwordLoginForm = findViewById(R.id.passwordLoginForm)
         toRegisterText = findViewById(R.id.toRegisterLabel)
@@ -49,26 +58,32 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-    fun login() {
+    private fun login() {
         errors=0
         if (!validation.emailValidation(emailLoginForm.text.toString().trim())) {
-            emailLoginForm.setError("To pole nie może być puste")
+            emailLoginForm.error = "To pole nie może być puste"
             errors++
         }
         if (!validation.passwordValidation(passwordLoginForm.text.toString().trim())) {
-            passwordLoginForm.setError("To pole nie może być puste")
-            errors++
-        }
-        if (!databaseHelper.checkUser(emailLoginForm.text.toString().trim(), passwordLoginForm.text.toString().trim())){
-            Toast.makeText(this@MainActivity, "Nazwa używtkownika lub hasło nieprawidłowe",Toast.LENGTH_LONG).show()
+            passwordLoginForm.error = "To pole nie może być puste"
             errors++
         }
         if (errors == 0) {
-            sessionManager.createLoginSession(emailLoginForm.text.toString().trim())
-            val intentMainPage = Intent(applicationContext, UserMainPage::class.java)
-            startActivity(intentMainPage)
-            finish()
+            if (databaseHelper.checkDoctor(emailLoginForm.text.toString().trim(), passwordLoginForm.text.toString().trim())) {
+                sessionManager.createDoctorSession(emailLoginForm.text.toString().trim())
+                val intent = Intent(applicationContext, DoctorMainPage::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            if (databaseHelper.checkUser(emailLoginForm.text.toString().trim(), passwordLoginForm.text.toString().trim())) {
+                sessionManager.createUserSession(emailLoginForm.text.toString().trim())
+                val intent = Intent(applicationContext, UserMainPage::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                Toast.makeText(this@MainActivity, "Nazwa używtkownika lub hasło nieprawidłowe", Toast.LENGTH_LONG).show()
+            }
         }
-        //else błąd nie udało się zalogować
     }
 }

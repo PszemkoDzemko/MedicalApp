@@ -8,7 +8,7 @@ import android.provider.ContactsContract
 class SessionManager(var context: Context) {
     var pref: SharedPreferences
     var editor: SharedPreferences.Editor
-    var PRIVATE_MODE: Int = 0
+    private var PRIVATE_MODE = 0
 
     init {
         pref = context.getSharedPreferences(PREF_NAME,PRIVATE_MODE)
@@ -16,20 +16,33 @@ class SessionManager(var context: Context) {
     }
 
     companion object{
-        val PREF_NAME: String = "MedicalApp"
-        val IS_LOGIN: String = "isLoggedIn"
-        val KEY_EMAIL: String = "email"
-
+        const val PREF_NAME: String = "MedicalApp"
+        const val IS_LOGIN: String = "isLoggedIn"
+        const val KEY_EMAIL: String = "email"
+        const val IS_DOCTOR: String = "doctor"
     }
 
-    fun createLoginSession(email: String){
+    fun createUserSession(email: String){
         editor.putBoolean(IS_LOGIN,true)
         editor.putString(KEY_EMAIL,email)
         editor.commit()
     }
+    fun createDoctorSession(email: String){
+        editor.putBoolean(IS_DOCTOR,true)
+        editor.putString(KEY_EMAIL,email)
+        editor.commit()
+    }
 
-    fun checkLogin(){
+    fun checkUserLogin(){
         if(!this.isLoggedIn()){
+            val intent = Intent (context,MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(intent)
+        }
+    }
+    fun checkDoctorLogin(){
+        if(!this.isDoctorLoggedIn()){
             val intent = Intent (context,MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -38,8 +51,8 @@ class SessionManager(var context: Context) {
     }
 
     fun getUserDetails():HashMap<String,String>{
-        val user: Map<String,String> = HashMap<String,String>()
-        (user as HashMap).put(KEY_EMAIL, pref.getString(KEY_EMAIL,null).toString())
+        val user: Map<String,String> = HashMap()
+        (user as HashMap)[KEY_EMAIL] = pref.getString(KEY_EMAIL,null).toString()
         return user
     }
     fun logoutUser(){
@@ -54,4 +67,8 @@ class SessionManager(var context: Context) {
     fun isLoggedIn():Boolean{
         return pref.getBoolean(IS_LOGIN,false)
     }
+    fun isDoctorLoggedIn():Boolean{
+        return pref.getBoolean(IS_DOCTOR,false)
+    }
+
 }

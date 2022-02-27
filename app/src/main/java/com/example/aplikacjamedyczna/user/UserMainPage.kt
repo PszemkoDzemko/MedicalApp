@@ -14,17 +14,15 @@ class UserMainPage : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.mainuserpage)
+        setContentView(R.layout.user_main_page)
         supportActionBar?.hide()
         sessionManager = SessionManager(applicationContext)
 
-        sessionManager.checkLogin()
+        sessionManager.checkUserLogin()
         val user: HashMap<String,String> =sessionManager.getUserDetails()
         val name: String = user.get(SessionManager.KEY_EMAIL)!!
 
-        searchInput= findViewById(R.id.searchInput)
-
-
+        searchInput = findViewById(R.id.searchInput)
         val searchFragment = SearchFragment()
         searchInput.setOnClickListener {
             //funkcja do szukania otwierana w nowym fragmencie

@@ -70,11 +70,9 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val cursorCount = cursor.count
         cursor.close()
         //p0.close() Odkomentuj to później
-        return if (cursorCount > 0) {
-            return true
-        } else {
-            checkDoctor(email, password)
-        }
+        if (cursorCount > 0) return true
+
+        return false
     }
 
     fun addDoctor(doctor: Doctor){
@@ -90,7 +88,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         //p0.close() Odkomentuj to później
     }
 
-    private fun checkDoctor(email: String,password: String):Boolean {
+    fun checkDoctor(email: String,password: String):Boolean {
         val columns = arrayOf(COLUMN_USER_ID)
         val p0 = this.readableDatabase
         val selection = "email = ? AND password = ?"
@@ -99,8 +97,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val cursorCount = cursor.count
         cursor.close()
         //p0.close() Odkomentuj to później
-        if(cursorCount>0)return true
-        return false
+        if(cursorCount>0) return true
+        return true
     }
 
 }
