@@ -11,13 +11,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class UserMainPage : AppCompatActivity() {
     private lateinit var sessionManager: SessionManager
     private lateinit var searchInput: TextView
+    val activity = this@UserMainPage
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_main_page)
         supportActionBar?.hide()
         sessionManager = SessionManager(applicationContext)
-
         sessionManager.checkUserLogin()
 //        val user: HashMap<String,String> =sessionManager.getUserDetails()
 //        val name: String = user.get(SessionManager.KEY_EMAIL)!!

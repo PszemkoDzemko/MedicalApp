@@ -2,9 +2,9 @@ package com.example.aplikacjamedyczna
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
 import com.example.aplikacjamedyczna.doctor.Doctor
 import com.example.aplikacjamedyczna.user.User
 
@@ -69,7 +69,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val selectionArgs = arrayOf(email,password)
         val cursor = p0.query(TABLE_USER,columns, selection,selectionArgs,null,null,null)
         val cursorCount = cursor.count
-
         cursor.close()
         //p0.close() Odkomentuj to później
         if (cursorCount > 0) return true
@@ -102,6 +101,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         if(cursorCount > 0) return true
 
         return false
+    }
+
+    fun readAllDoctors(): Cursor {
+        val query = "SELECT * FROM $TABLE_DOCTOR"
+        val p0 = this.readableDatabase
+        return p0.rawQuery(query, null)
     }
 
 }
