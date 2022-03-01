@@ -107,7 +107,7 @@ class DatabaseHelper(context: FragmentActivity?) : SQLiteOpenHelper(context, DAT
 
     fun readAllDoctors(): Cursor {
         val p0 = this.readableDatabase
-        Log.e("Cursor", p0.rawQuery("SELECT *FROM doctors",null).toString())
+        //Log.e("Cursor", p0.rawQuery("SELECT *FROM doctors",null).toString())
         return p0.rawQuery("SELECT *FROM doctors",null)!!
     }
 
