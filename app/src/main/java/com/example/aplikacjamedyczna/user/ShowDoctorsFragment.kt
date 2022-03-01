@@ -3,6 +3,7 @@ package com.example.aplikacjamedyczna.user
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +21,7 @@ class ShowDoctorsFragment : Fragment(R.layout.fragment_show_doctors) {
     private lateinit var doctor_surname: ArrayList<String>
     private lateinit var doctor_specialization: ArrayList<String>
     private lateinit var userMainPage: UserMainPage
-    private lateinit var customAdapter: CustomAdapter
+    private var doctorAdapter: DoctorAdapter = DoctorAdapter()
     override fun onAttach(context: Context) {
         super.onAttach(context)
         databaseHelper = DatabaseHelper(activity)
@@ -36,10 +37,24 @@ class ShowDoctorsFragment : Fragment(R.layout.fragment_show_doctors) {
         doctor_specialization = ArrayList()
         storeDataInArrays()
         val layoutManager = LinearLayoutManager(activity)
-        customAdapter = CustomAdapter(doctor_id,doctor_name,doctor_surname,doctor_specialization)
+        doctorAdapter.setDoctorList(doctor_id,doctor_name,doctor_surname,doctor_specialization)
+
         recycleView.layoutManager = layoutManager
-        recycleView.adapter = customAdapter
+        recycleView.adapter = doctorAdapter
+        val searchView = view.findViewById<SearchView>(R.id.searchView)
+        searchView.maxWidth = Int.MAX_VALUE
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                //Log.e("Tag","$newText")
+                doctorAdapter.filter.filter(newText)
+                return true
+            }
+        })
     }
+
 
     fun storeDataInArrays(){
         val cursor = databaseHelper.readAllDoctors()

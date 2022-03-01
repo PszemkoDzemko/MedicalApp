@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         }
         loginButton.setOnClickListener{
             login()
-
         }
     }
     private fun login() {

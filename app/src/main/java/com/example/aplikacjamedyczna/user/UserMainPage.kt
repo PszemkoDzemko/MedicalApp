@@ -1,7 +1,7 @@
 package com.example.aplikacjamedyczna.user
 
 import android.os.Bundle
-import android.widget.TextView
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.aplikacjamedyczna.R
@@ -10,7 +10,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class UserMainPage : AppCompatActivity() {
     private lateinit var sessionManager: SessionManager
-    private lateinit var searchInput: TextView
+    private lateinit var searchInput: EditText
+    private lateinit var doctorAdapter: DoctorAdapter
     val activity = this@UserMainPage
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,23 +23,17 @@ class UserMainPage : AppCompatActivity() {
         sessionManager.checkUserLogin()
 //        val user: HashMap<String,String> =sessionManager.getUserDetails()
 //        val name: String = user.get(SessionManager.KEY_EMAIL)!!
-
-        searchInput = findViewById(R.id.searchInput)
-        val searchFragment = SearchFragment()
-        searchInput.setOnClickListener {
-            //funkcja do szukania otwierana w nowym fragmencie
-            setCurrentFragment(searchFragment)
-        }
-        val firstFragment = ShowDoctorsFragment()
-        val secondFragment= SecondFragment()
+        val showDoctorsFragment = ShowDoctorsFragment()
+        val secondFragment = SecondFragment()
         val registerToVisitFragment = RegisterToVisitFragment()
-        setCurrentFragment(firstFragment)
+        setCurrentFragment(showDoctorsFragment)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        bottomNavigationView.setOnItemSelectedListener { when(it.itemId){
-            R.id.visitsMenu->setCurrentFragment(firstFragment)
-            R.id.page_2->setCurrentFragment(secondFragment)
-            R.id.registerToVisitMenu->setCurrentFragment(registerToVisitFragment)
-        }
+        bottomNavigationView.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.visitsMenu -> setCurrentFragment(showDoctorsFragment)
+                R.id.page_2 -> setCurrentFragment(secondFragment)
+                R.id.registerToVisitMenu -> setCurrentFragment(registerToVisitFragment)
+            }
             true
         }
     }
@@ -47,4 +42,6 @@ class UserMainPage : AppCompatActivity() {
         commit()}
     }
 }
+
+
 
