@@ -29,7 +29,7 @@ class UserMainPage : AppCompatActivity() {
             //funkcja do szukania otwierana w nowym fragmencie
             setCurrentFragment(searchFragment)
         }
-        val firstFragment = VisitsFragment()
+        val firstFragment = ShowDoctorsFragment()
         val secondFragment= SecondFragment()
         val registerToVisitFragment = RegisterToVisitFragment()
         setCurrentFragment(firstFragment)

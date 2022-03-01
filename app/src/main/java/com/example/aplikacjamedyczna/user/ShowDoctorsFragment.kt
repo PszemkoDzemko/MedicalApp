@@ -1,7 +1,6 @@
 package com.example.aplikacjamedyczna.user
 
 import android.content.Context
-import android.database.Cursor
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -12,7 +11,7 @@ import com.example.aplikacjamedyczna.DatabaseHelper
 import com.example.aplikacjamedyczna.R
 
 
-class VisitsFragment : Fragment(R.layout.fragment_visits) {
+class ShowDoctorsFragment : Fragment(R.layout.fragment_show_doctors) {
 
     private lateinit var recycleView:RecyclerView
     private lateinit var databaseHelper: DatabaseHelper

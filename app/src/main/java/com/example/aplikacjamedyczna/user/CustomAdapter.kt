@@ -1,8 +1,5 @@
 package com.example.aplikacjamedyczna.user
 
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplikacjamedyczna.R
 
-
 class CustomAdapter(doc_id: ArrayList<String>, doc_name: ArrayList<String>,doc_surname:ArrayList<String>, doc_specialization: ArrayList<String>): RecyclerView.Adapter<CustomAdapter.MyViewHolder>() {
     val doctor_id:ArrayList<String> = doc_id
     val doctor_name:ArrayList<String> = doc_name
     val doctor_surname:ArrayList<String> = doc_surname
     val doctor_specialization:ArrayList<String> = doc_specialization
-
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var nameDoctor:TextView  = itemView.findViewById(R.id.nameCardDoctor)
