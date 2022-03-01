@@ -1,5 +1,6 @@
 package com.example.aplikacjamedyczna.user
 
+import android.content.Context
 import android.database.Cursor
 import android.os.Bundle
 import android.view.View
@@ -18,15 +19,24 @@ class VisitsFragment : Fragment(R.layout.fragment_visits) {
     private lateinit var doctor_name: ArrayList<String>
     private lateinit var doctor_specialization: ArrayList<String>
     private lateinit var userMainPage: UserMainPage
+    private lateinit var customAdapter: CustomAdapter
+    private lateinit var cursor: Cursor
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        databaseHelper = DatabaseHelper(activity)
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        userMainPage = UserMainPage()
         recycleView = view.findViewById(R.id.doctorRecycleView)
-        databaseHelper = DatabaseHelper(userMainPage.activity)
         doctor_id = ArrayList();
         doctor_name = ArrayList();
         doctor_specialization = ArrayList();
         storeDataInArrays()
+
+        //customAdapter = CustomAdapter(userMainPage.activity,userMainPage.applicationContext,doctor_id,doctor_name,doctor_specialization)
+        //recycleView.adapter = customAdapter
+
 
     }
     fun storeDataInArrays(){

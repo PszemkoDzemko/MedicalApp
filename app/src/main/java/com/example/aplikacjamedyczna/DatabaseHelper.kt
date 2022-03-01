@@ -5,6 +5,8 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
+import androidx.fragment.app.FragmentActivity
 import com.example.aplikacjamedyczna.doctor.Doctor
 import com.example.aplikacjamedyczna.user.User
 
@@ -15,7 +17,7 @@ private const val TABLE_DOCTOR = "doctors"
 private const val COLUMN_USER_ID = "id"
 
 
-class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
+class DatabaseHelper(context: FragmentActivity?) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
 
     private val CREATE_USER_TABEL =("CREATE TABLE \"users\" (\n" +
             "\t\"id\"\tINTEGER,\n" +
@@ -92,21 +94,21 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val columns = arrayOf(COLUMN_USER_ID)
         val p0 = this.readableDatabase
         val selection = "email = ? AND password = ?"
-        val selectionArgs = arrayOf(email,password)
-        val cursor = p0.query(TABLE_DOCTOR,columns, selection,selectionArgs,null,null,null)
+        val selectionArgs = arrayOf(email, password)
+        val cursor = p0.query(TABLE_DOCTOR, columns, selection, selectionArgs, null, null, null)
         val cursorCount = cursor.count
 //      Log.e(email,"$cursorCount")
         cursor.close()
         //p0.close() Odkomentuj to później
-        if(cursorCount > 0) return true
+        if (cursorCount > 0) return true
 
         return false
     }
 
     fun readAllDoctors(): Cursor {
-        val query = "SELECT * FROM $TABLE_DOCTOR"
         val p0 = this.readableDatabase
-        return p0.rawQuery(query, null)
+        Log.e("Cursor", p0.rawQuery("SELECT *FROM doctors",null).toString())
+        return p0.rawQuery("SELECT *FROM doctors",null)!!
     }
 
 }
