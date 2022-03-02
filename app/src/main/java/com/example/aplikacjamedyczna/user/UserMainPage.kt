@@ -10,8 +10,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class UserMainPage : AppCompatActivity() {
     private lateinit var sessionManager: SessionManager
-    private lateinit var searchInput: EditText
-    private lateinit var doctorAdapter: DoctorAdapter
     val activity = this@UserMainPage
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +19,7 @@ class UserMainPage : AppCompatActivity() {
         supportActionBar?.hide()
         sessionManager = SessionManager(applicationContext)
         sessionManager.checkUserLogin()
-//        val user: HashMap<String,String> =sessionManager.getUserDetails()
+//        val user: HashMap<String,String> = sessionManager.getUserDetails()
 //        val name: String = user.get(SessionManager.KEY_EMAIL)!!
         val showDoctorsFragment = ShowDoctorsFragment()
         val secondFragment = SecondFragment()

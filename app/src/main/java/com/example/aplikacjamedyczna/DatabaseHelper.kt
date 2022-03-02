@@ -110,5 +110,9 @@ class DatabaseHelper(context: FragmentActivity?) : SQLiteOpenHelper(context, DAT
         //Log.e("Cursor", p0.rawQuery("SELECT *FROM doctors",null).toString())
         return p0.rawQuery("SELECT *FROM doctors",null)!!
     }
+    fun readDocDescription(id:String):Cursor{
+        val p0 = this.readableDatabase
+        return p0.rawQuery("SELECT *FROM doctors WHERE id=$id",null)!!
+    }
 
 }
