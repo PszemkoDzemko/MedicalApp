@@ -1,12 +1,10 @@
 package com.example.aplikacjamedyczna
 
 import android.content.ContentValues
-import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
-import android.util.TimeFormatException
 import androidx.fragment.app.FragmentActivity
 import com.example.aplikacjamedyczna.doctor.Doctor
 import com.example.aplikacjamedyczna.user.User
@@ -142,6 +140,10 @@ class DatabaseHelper(context: FragmentActivity?) : SQLiteOpenHelper(context, DAT
         Log.e("elo","$values")
         p0.insert(TABLE_VISIT,null,values)
         //p0.close() Odkomentuj to później
+    }
+    fun readPatientVisit(email: String):Cursor{
+        val p0 = this.readableDatabase
+        return p0.rawQuery("SELECT *FROM visits WHERE pac_email = '$email'",null)
     }
 
 }

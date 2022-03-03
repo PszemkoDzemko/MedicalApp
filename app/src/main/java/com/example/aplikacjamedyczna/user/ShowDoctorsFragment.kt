@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplikacjamedyczna.DatabaseHelper
 import com.example.aplikacjamedyczna.R
-import com.example.aplikacjamedyczna.doctor.Doctor
 import com.example.aplikacjamedyczna.doctor.DoctorArrayList
 
 
@@ -32,7 +31,7 @@ class ShowDoctorsFragment : Fragment(R.layout.fragment_show_doctors) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         userMainPage = UserMainPage()
-        recycleView = view.findViewById(R.id.doctorRecycleView)
+        recycleView = view.findViewById(R.id.visitsRecycleView)
         doctor_id = ArrayList()
         doctor_name = ArrayList()
         doctor_surname = ArrayList()
@@ -43,6 +42,7 @@ class ShowDoctorsFragment : Fragment(R.layout.fragment_show_doctors) {
         doctorAdapter.setNewDoctorList(doctorArrayList)
         recycleView.layoutManager = layoutManager
         recycleView.adapter = doctorAdapter
+
         val searchView = view.findViewById<SearchView>(R.id.searchView)
         searchView.maxWidth = Int.MAX_VALUE
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
@@ -50,14 +50,12 @@ class ShowDoctorsFragment : Fragment(R.layout.fragment_show_doctors) {
                 return true
             }
             override fun onQueryTextChange(newText: String?): Boolean {
-                //Log.e("Tag","$newText")
                 doctorAdapter.filter.filter(newText)
                 return true
             }
         })
     }
-
-
+//Tu cos jest nie tak z tym CardView Doktora
     fun storeDataInArrays(){
         val cursor = databaseHelper.readAllDoctors()
         if(cursor.count<0){
