@@ -22,7 +22,7 @@ class ShowDoctorsFragment : Fragment(R.layout.fragment_show_doctors) {
     private lateinit var doctor_surname: ArrayList<String>
     private lateinit var doctor_specialization: ArrayList<String>
     private lateinit var userMainPage: UserMainPage
-    lateinit var doctorArrayList: DoctorArrayList
+    private lateinit var doctorArrayList: DoctorArrayList
     private var doctorAdapter: DoctorAdapter = DoctorAdapter()
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -37,6 +37,7 @@ class ShowDoctorsFragment : Fragment(R.layout.fragment_show_doctors) {
         doctor_name = ArrayList()
         doctor_surname = ArrayList()
         doctor_specialization = ArrayList()
+        doctorArrayList=DoctorArrayList(doctor_id,doctor_name,doctor_surname,doctor_specialization)
         storeDataInArrays()
         val layoutManager = LinearLayoutManager(activity)
         doctorAdapter.setNewDoctorList(doctorArrayList)

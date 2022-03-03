@@ -6,14 +6,16 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import android.util.TimeFormatException
 import androidx.fragment.app.FragmentActivity
 import com.example.aplikacjamedyczna.doctor.Doctor
 import com.example.aplikacjamedyczna.user.User
 
 private const val DATABASE_NAME = "Med"
-private const val DATABASE_VERSION = 2
+private const val DATABASE_VERSION = 3
 private const val TABLE_USER = "users"
 private const val TABLE_DOCTOR = "doctors"
+private const val TABLE_VISIT = "visits"
 private const val COLUMN_USER_ID = "id"
 
 
@@ -39,17 +41,31 @@ class DatabaseHelper(context: FragmentActivity?) : SQLiteOpenHelper(context, DAT
             "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
             ");")
 
+    private val CREATE_VISIT_TABLE =("CREATE TABLE \"visits\" (\n" +
+            "\t\"id\"\tINTEGER,\n" +
+            "\t\"pac_email\"\tTEXT,\n" +
+            "\t\"doc_name\"\tTEXT,\n" +
+            "\t\"doc_surname\"\tTEXT,\n" +
+            "\t\"doc_spec\"\tTEXT,\n" +
+            "\t\"date\"\tTEXT,\n" +
+            "\t\"time\"\tTEXT,\n" +
+            "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
+            ");")
+
     private val DROP_USER_TABLE = "DROP TABLE IF EXISTS $TABLE_USER"
     private val DROP_DOCTOR_TABLE = "DROP TABLE IF EXISTS $TABLE_DOCTOR"
+    private val DROP_VISITS_TABLE = "DROP TABLE IF EXISTS $TABLE_VISIT"
 
     override fun onCreate(p0: SQLiteDatabase) {
         p0.execSQL(CREATE_USER_TABEL)
         p0.execSQL(CREATE_DOCTOR_TABLE)
+        p0.execSQL(CREATE_VISIT_TABLE)
     }
 
     override fun onUpgrade(p0: SQLiteDatabase, p1: Int, p2: Int) {
         p0.execSQL(DROP_USER_TABLE)
         p0.execSQL(DROP_DOCTOR_TABLE)
+        p0.execSQL(DROP_VISITS_TABLE)
         onCreate(p0)
     }
     fun addUser(user: User){
@@ -114,8 +130,18 @@ class DatabaseHelper(context: FragmentActivity?) : SQLiteOpenHelper(context, DAT
         val p0 = this.readableDatabase
         return p0.rawQuery("SELECT *FROM doctors WHERE id=$id",null)!!
     }
-    fun registerToVisit(DocId:String){
-
+    fun registerToVisit(pacEmail:String, docName:String,docSurname:String,docSpec:String,date:String,time:String){
+        val p0 = this.writableDatabase
+        val values = ContentValues()
+        values.put("pac_email",pacEmail)
+        values.put("doc_name",docName)
+        values.put("doc_surname",docSurname)
+        values.put("doc_spec",docSpec)
+        values.put("date",date)
+        values.put("time",time)
+        Log.e("elo","$values")
+        p0.insert(TABLE_VISIT,null,values)
+        //p0.close() Odkomentuj to później
     }
 
 }
