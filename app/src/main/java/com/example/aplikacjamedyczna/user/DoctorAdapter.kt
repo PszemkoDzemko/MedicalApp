@@ -1,40 +1,27 @@
 package com.example.aplikacjamedyczna.user
 
-import android.content.Context
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aplikacjamedyczna.DoctorDescriptionFragment
 import com.example.aplikacjamedyczna.R
+import com.example.aplikacjamedyczna.doctor.DoctorArrayList
 import java.util.*
 import kotlin.collections.ArrayList
 
 
 class DoctorAdapter: RecyclerView.Adapter<DoctorAdapter.MyViewHolder>(), Filterable {
-    private lateinit var doctor_id:ArrayList<String>
-    private lateinit var doctor_idFiltered:ArrayList<String>
-    private lateinit var doctor_name:ArrayList<String>
-    private lateinit var doctor_nameFiltered:ArrayList<String>
-    private lateinit var doctor_surname:ArrayList<String>
-    private lateinit var doctor_surnameFiltered:ArrayList<String>
-    private lateinit var doctor_specialization:ArrayList<String>
-    private lateinit var doctor_specializationFiltered:ArrayList<String>
+    private lateinit var doctorArrayList: DoctorArrayList
+    private lateinit var doctorArrayListFiltered: DoctorArrayList
     private lateinit var view:View
 
-    fun setDoctorList(doc_id:ArrayList<String>, doc_name:ArrayList<String>, doc_surname: ArrayList<String>, doc_specialization: ArrayList<String>) {
-        doctor_id = doc_id
-        doctor_idFiltered = doc_id
-        doctor_name = doc_name
-        doctor_nameFiltered  = doc_name
-        doctor_surname = doc_surname
-        doctor_surnameFiltered = doc_surname
-        doctor_specialization = doc_specialization
-        doctor_specializationFiltered = doc_specialization
+    fun setNewDoctorList(docArrayList: DoctorArrayList){
+        doctorArrayList = docArrayList
+        doctorArrayListFiltered = docArrayList
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -52,22 +39,22 @@ class DoctorAdapter: RecyclerView.Adapter<DoctorAdapter.MyViewHolder>(), Filtera
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.idDoctor.text=doctor_id[position]
-        holder.nameDoctor.text=doctor_nameFiltered[position]
-        holder.surnameDoctor.text=doctor_surname[position]
-        holder.specializtionDoctor.text=doctor_specialization[position]
-        //Log.e("holder", doctor_name[position])
+        holder.idDoctor.text=doctorArrayList.id[position]
+        holder.nameDoctor.text=doctorArrayList.name[position]
+        holder.surnameDoctor.text=doctorArrayList.surname[position]
+        holder.specializtionDoctor.text=doctorArrayList.specialization[position]
+        //Log.e("holder", doctor_idFiltered[position])
         holder.mainLayout.setOnClickListener {
             view.context
             Intent()
                     val activity = view.context as AppCompatActivity
-                    val myFragment = DoctorDescriptionFragment(doctor_id[position])
+                    val myFragment = DoctorDescriptionFragment(doctorArrayList.id[position])
                     activity.supportFragmentManager.beginTransaction().replace(R.id.flFragment, myFragment).addToBackStack(null).commit()
         }
     }
 
     override fun getItemCount(): Int {
-        return doctor_nameFiltered.size
+        return doctorArrayList.name.size
     }
 
     override fun getFilter(): Filter {
@@ -75,13 +62,12 @@ class DoctorAdapter: RecyclerView.Adapter<DoctorAdapter.MyViewHolder>(), Filtera
             var filterResult = FilterResults()
             override fun performFiltering(charSequence: CharSequence): FilterResults {
                 if (charSequence.isEmpty()){
-                    filterResult.values = doctor_name
+                    filterResult.values = doctorArrayList.name
                 }else{
                     val doctorModal = ArrayList<String>()
-                    for(item in doctor_name){
+                    for(item in doctorArrayList.name){
                         if(item.lowercase(Locale.getDefault()).contains(charSequence.toString())||item.contains(charSequence.toString())) {
                             doctorModal.add(item)
-                            //Log.e("Tag","$doctorModal")
                         }
                         filterResult.count = doctorModal.size
                         filterResult.values = doctorModal
@@ -90,10 +76,11 @@ class DoctorAdapter: RecyclerView.Adapter<DoctorAdapter.MyViewHolder>(), Filtera
                 return filterResult
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
-                doctor_nameFiltered = p1!!.values as ArrayList<String>
+                doctorArrayListFiltered.name = p1!!.values as ArrayList<String>
                 //Log.e("size","${filterResult.count}")
-                //Log.e("doctor","$doctor_nameFiltered")
+                //Log.e("doctor","$doctorArrayList")
                 notifyDataSetChanged()
                 //chuj wie co tu trzeba zrobić żeby to wyszukiwanie zmieniało te cardview
                 //w pizde jebane jedyne co robi to błędy napierdala

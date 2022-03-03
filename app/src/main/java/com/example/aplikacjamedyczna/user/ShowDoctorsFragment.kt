@@ -10,10 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplikacjamedyczna.DatabaseHelper
 import com.example.aplikacjamedyczna.R
+import com.example.aplikacjamedyczna.doctor.Doctor
+import com.example.aplikacjamedyczna.doctor.DoctorArrayList
 
 
 class ShowDoctorsFragment : Fragment(R.layout.fragment_show_doctors) {
-
     private lateinit var recycleView:RecyclerView
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var doctor_id: ArrayList<String>
@@ -21,6 +22,7 @@ class ShowDoctorsFragment : Fragment(R.layout.fragment_show_doctors) {
     private lateinit var doctor_surname: ArrayList<String>
     private lateinit var doctor_specialization: ArrayList<String>
     private lateinit var userMainPage: UserMainPage
+    lateinit var doctorArrayList: DoctorArrayList
     private var doctorAdapter: DoctorAdapter = DoctorAdapter()
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -37,8 +39,7 @@ class ShowDoctorsFragment : Fragment(R.layout.fragment_show_doctors) {
         doctor_specialization = ArrayList()
         storeDataInArrays()
         val layoutManager = LinearLayoutManager(activity)
-        doctorAdapter.setDoctorList(doctor_id,doctor_name,doctor_surname,doctor_specialization)
-
+        doctorAdapter.setNewDoctorList(doctorArrayList)
         recycleView.layoutManager = layoutManager
         recycleView.adapter = doctorAdapter
         val searchView = view.findViewById<SearchView>(R.id.searchView)
@@ -66,6 +67,7 @@ class ShowDoctorsFragment : Fragment(R.layout.fragment_show_doctors) {
                 doctor_name.add(cursor.getString(1))
                 doctor_surname.add(cursor.getString(2))
                 doctor_specialization.add(cursor.getString(4))
+                doctorArrayList = DoctorArrayList(doctor_id,doctor_name,doctor_surname,doctor_specialization)
             }
         }
 

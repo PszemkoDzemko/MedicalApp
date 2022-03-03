@@ -114,5 +114,8 @@ class DatabaseHelper(context: FragmentActivity?) : SQLiteOpenHelper(context, DAT
         val p0 = this.readableDatabase
         return p0.rawQuery("SELECT *FROM doctors WHERE id=$id",null)!!
     }
+    fun registerToVisit(DocId:String){
+
+    }
 
 }

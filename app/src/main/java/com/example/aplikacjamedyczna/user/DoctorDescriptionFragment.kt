@@ -1,4 +1,4 @@
-package com.example.aplikacjamedyczna
+package com.example.aplikacjamedyczna.user
 
 import android.content.Context
 import android.os.Bundle
@@ -6,7 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import com.example.aplikacjamedyczna.user.UserMainPage
+import com.example.aplikacjamedyczna.DatabaseHelper
+import com.example.aplikacjamedyczna.R
 
 class DoctorDescriptionFragment(doctorid: String) : Fragment(R.layout.fragment_doctor_description) {
     private lateinit var databaseHelper: DatabaseHelper
@@ -30,7 +31,7 @@ class DoctorDescriptionFragment(doctorid: String) : Fragment(R.layout.fragment_d
     private fun storeToStringData() {
         val cursor = databaseHelper.readDocDescription(doctrid)
         if(cursor.count < 0 ){
-            Toast.makeText(userMainPage,"No data", Toast.LENGTH_SHORT)
+            Toast.makeText(userMainPage,"No data", Toast.LENGTH_SHORT).show()
         }else{
             while (cursor.moveToNext()) {
                 docName.text = cursor.getString(1)
