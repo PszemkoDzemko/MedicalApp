@@ -20,9 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".user.Register"/>
+        <activity android:name=".registration.Register"/>
         <activity android:name=".user.UserMainPage"/>
         <activity android:name=".doctor.DoctorMainPage"/>
-        <activity android:name=".doctor.DoctorRegister"/>
+        <activity android:name=".registration.UserDetails"/>
     </application>
 </manifest>

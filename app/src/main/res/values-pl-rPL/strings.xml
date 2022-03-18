@@ -18,8 +18,11 @@
     <string name="searchHint">Wyszukaj</string>
     <string name="doctorRegisterLabel">Lekarz? Dołącz tutaj</string>
     <string name="backToLogin">Powrót do ekranu logowania</string>
-    <string name="doctorRegister">Zarejestruj jako lekarz</string>
-    <string name="doctorSpecializationHint">Specjalizacja</string>
+    <string name="userDetails">Podaj dodatkowe dane</string>
+    <string name="peselHint">Pesel</string>
     <string name="emptyError">To pole nie może być puste</string>
     <string name="notSamePasswordError">Hasła nie są identyczne</string>
+    <string name="saveData">Zapisz</string>
+    <string name="cityHint">Miasto</string>
+    <string name="addressHint">Adres</string>
 </resources>

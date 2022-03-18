@@ -6,9 +6,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.example.aplikacjamedyczna.doctor.DoctorMainPage
-import com.example.aplikacjamedyczna.user.Register
+import com.example.aplikacjamedyczna.registration.Register
+import com.example.aplikacjamedyczna.registration.Validation
 import com.example.aplikacjamedyczna.user.UserMainPage
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     private val activity = this@MainActivity
@@ -16,38 +17,35 @@ class MainActivity : AppCompatActivity() {
     private lateinit var emailLoginForm: TextView
     private lateinit var passwordLoginForm: TextView
     private lateinit var loginButton: Button
-    private lateinit var databaseHelper: DatabaseHelper
     private lateinit var validation: Validation
     private var errors=0
     var emptyError=""
-    private lateinit var sessionManager: SessionManager
+    private val fbAuth = FirebaseAuth.getInstance()
+
+    override fun onStart() {
+        super.onStart()
+        isCurrentUser()
+    }
+
+    private fun isCurrentUser() {
+        fbAuth.currentUser?.let { auth->
+
+            val intent = Intent(applicationContext, UserMainPage::class.java).apply {
+                flags = (Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            }
+            startActivity(intent)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportActionBar?.hide()
-
-        sessionManager = SessionManager(applicationContext)
-        if(sessionManager.isDoctorLoggedIn()){
-            val intent = Intent(applicationContext,DoctorMainPage::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            finish()
-        }//kurwa ale jestem zajebisty że to zrobiłem z 30 min się męczyłem nad tym bo else nie działa tak jak powinien xD
-        if(sessionManager.isLoggedIn()){
-            val intent = Intent(applicationContext,UserMainPage::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            finish()
-        }
         emptyError = getString(R.string.emptyError)
         emailLoginForm = findViewById(R.id.emailLoginForm)
         passwordLoginForm = findViewById(R.id.passwordLoginForm)
         toRegisterText = findViewById(R.id.toRegisterLabel)
         loginButton = findViewById(R.id.loginButton)
         validation = Validation(activity)
-        databaseHelper = DatabaseHelper(activity)
         toRegisterText.setOnClickListener{
             val intentRegister = Intent(applicationContext, Register::class.java)
             startActivity(intentRegister)
@@ -67,23 +65,19 @@ class MainActivity : AppCompatActivity() {
             errors++
         }
         if (errors == 0) {
-            when {
-                databaseHelper.checkUser(emailLoginForm.text.toString().trim(), passwordLoginForm.text.toString().trim()) -> {
-                    sessionManager.createUserSession(emailLoginForm.text.toString().trim())
-                    val intent = Intent(applicationContext, UserMainPage::class.java)
-                    startActivity(intent)
-                    finish()
+            fbAuth.signInWithEmailAndPassword(emailLoginForm.text.toString().trim(),passwordLoginForm.text.toString().trim())
+                .addOnSuccessListener {authRes->
+                    if(authRes.user!=null) {
+                        val intent = Intent(applicationContext, UserMainPage::class.java).apply {
+                            flags = (Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        }
+                        startActivity(intent)
+                    }
                 }
-                databaseHelper.checkDoctor(emailLoginForm.text.toString().trim(), passwordLoginForm.text.toString().trim()) -> {
-                    sessionManager.createDoctorSession(emailLoginForm.text.toString().trim())
-                    val intent = Intent(applicationContext, DoctorMainPage::class.java)
-                    startActivity(intent)
-                    finish()
+                .addOnFailureListener {exc->
+                    Toast.makeText(this,exc.message.toString(),Toast.LENGTH_LONG).show()
                 }
-                else -> {
-                    Toast.makeText(this@MainActivity, "Nazwa używtkownika lub hasło nieprawidłowe", Toast.LENGTH_LONG).show()
-                }
-            }
+
         }
     }
 }
