@@ -25,4 +25,5 @@
     <string name="saveData">Zapisz</string>
     <string name="cityHint">Miasto</string>
     <string name="addressHint">Adres</string>
+    <string name="visitRegister">Zapisz na wizytę</string>
 </resources>

@@ -20,15 +20,18 @@ class UserMainPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_main_page)
         val showDoctorsFragment = ShowDoctorsFragment()
-        val secondFragment = VisitsFragment()
+        val visitsFragment = VisitsFragment()
         val registerToVisitFragment = VisitsFragment()
+        val profileFragment = ProfileFragment()
         setCurrentFragment(showDoctorsFragment)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.visitsMenu -> setCurrentFragment(showDoctorsFragment)
-                R.id.page_2 -> setCurrentFragment(secondFragment)
+                R.id.doctorsMenu -> setCurrentFragment(showDoctorsFragment)
+                R.id.visitMenu -> setCurrentFragment(visitsFragment)
                 R.id.registerToVisitMenu -> setCurrentFragment(registerToVisitFragment)
+                R.id.page_4 -> setCurrentFragment(registerToVisitFragment)
+                R.id.profileMenu -> setCurrentFragment(profileFragment)
             }
             true
         }

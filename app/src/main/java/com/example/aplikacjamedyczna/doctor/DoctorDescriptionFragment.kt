@@ -1,7 +1,6 @@
 package com.example.aplikacjamedyczna.doctor
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
@@ -39,7 +38,7 @@ class DoctorDescriptionFragment(doctor:Doctor) : Fragment(R.layout.fragment_doct
         }else{
             Picasso.get().load(doc.img).into(docImg)
         }
-        registerToVisitButton = view.findViewById(R.id.registerToVisitButton)
+        registerToVisitButton = view.findViewById(R.id.goToRegisterToVisitButton)
         docName.text = doc.name
         docSurname.text = doc.surname
         docSpec.text = doc.specialization
