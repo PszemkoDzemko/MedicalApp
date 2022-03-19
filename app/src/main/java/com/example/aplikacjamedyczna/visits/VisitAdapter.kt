@@ -1,4 +1,4 @@
-package com.example.aplikacjamedyczna.user
+package com.example.aplikacjamedyczna.visits
 
 import android.view.LayoutInflater
 import android.view.View

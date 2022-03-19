@@ -1,8 +1,10 @@
 package com.example.aplikacjamedyczna.doctor
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplikacjamedyczna.R
@@ -12,6 +14,7 @@ class DoctorAdapter(private val listener: OnDoctorItemLongClick): RecyclerView.A
 
     private val doctorsList = ArrayList<Doctor>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setDoctors(list: List<Doctor>){
         doctorsList.clear()
         doctorsList.addAll(list)
@@ -32,7 +35,13 @@ class DoctorAdapter(private val listener: OnDoctorItemLongClick): RecyclerView.A
         val name = holder.itemView.findViewById<TextView>(R.id.nameCardDoctor)
         val surname = holder.itemView.findViewById<TextView>(R.id.surnameCardDoctor)
         val spec = holder.itemView.findViewById<TextView>(R.id.specCardDoctor)
-
+        val rating = holder.itemView.findViewById<RatingBar>(R.id.ratingBar)
+        val rat =(doctorsList[holder.adapterPosition].rating)?.toFloat()
+        val nrRat = (doctorsList[holder.adapterPosition].nrRating)?.toFloat()
+        if (rat != null) {
+            rating.rating = rat / nrRat!!
+        }
+        rating.setIsIndicator(true)
         name.text = doctorsList[holder.adapterPosition].name
         surname.text = doctorsList[holder.adapterPosition].surname
         spec.text = doctorsList[holder.adapterPosition].specialization
@@ -44,7 +53,7 @@ class DoctorAdapter(private val listener: OnDoctorItemLongClick): RecyclerView.A
 
     inner class DoctorViewHolder(view: View):RecyclerView.ViewHolder(view) {
         init {
-            view.setOnLongClickListener{
+            view.setOnClickListener{
                 listener.onDoctorLongClick(doctorsList[adapterPosition], adapterPosition)
                 true
             }

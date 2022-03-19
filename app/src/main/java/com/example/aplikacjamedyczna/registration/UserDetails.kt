@@ -83,8 +83,8 @@ class UserDetails : AppCompatActivity() {
             database.collection("users").document(uid).set(user).addOnSuccessListener {
                 val intent = Intent(applicationContext, UserMainPage::class.java)
                 startActivity(intent)
-            }.addOnFailureListener {
-                Log.d("elo", "nie udało się")
+            }.addOnFailureListener {exe->
+                Log.d("UserDetails", exe.message.toString())
             }
         }
     }

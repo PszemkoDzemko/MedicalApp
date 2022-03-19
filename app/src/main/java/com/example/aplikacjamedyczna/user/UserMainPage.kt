@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.example.aplikacjamedyczna.R
 import com.example.aplikacjamedyczna.doctor.ShowDoctorsFragment
 import com.example.aplikacjamedyczna.registration.UserDetails
+import com.example.aplikacjamedyczna.visits.VisitsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -19,8 +20,8 @@ class UserMainPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_main_page)
         val showDoctorsFragment = ShowDoctorsFragment()
-        val secondFragment = SecondFragment()
-        val registerToVisitFragment = RegisterToVisitFragment()
+        val secondFragment = VisitsFragment()
+        val registerToVisitFragment = VisitsFragment()
         setCurrentFragment(showDoctorsFragment)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavigationView.setOnItemSelectedListener {
@@ -40,7 +41,9 @@ class UserMainPage : AppCompatActivity() {
                 if(document != null){
                     if(document.exists()){
                     }else{
-                        val intent = Intent(applicationContext, UserDetails::class.java)
+                        val intent = Intent(applicationContext, UserDetails::class.java).apply {
+                            flags = (Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        }
                         startActivity(intent)
                     }
                 }

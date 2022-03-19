@@ -1,12 +1,9 @@
 package com.example.aplikacjamedyczna.doctor
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +17,7 @@ class ShowDoctorsFragment : Fragment(), OnDoctorItemLongClick {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_show_doctors, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,12 +29,19 @@ class ShowDoctorsFragment : Fragment(), OnDoctorItemLongClick {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        loadDoc()
+    }
+
+    fun loadDoc(){
         doctorViewModel.doctors.observe(viewLifecycleOwner) { list ->
             adapter.setDoctors(list)
         }
     }
 
     override fun onDoctorLongClick(doctor: Doctor, position: Int) {
-
+        val myFragment = DoctorDescriptionFragment(doctor)
+        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.flFragment, myFragment)
+            ?.addToBackStack(null)
+            ?.commit()
     }
 }
