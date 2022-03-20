@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.aplikacjamedyczna.R
 import com.example.aplikacjamedyczna.data.Doctor
 
-class DoctorAdapter(private val listener: OnDoctorItemLongClick): RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder>() {
+class DoctorAdapter(private val listener: OnDoctorItemClick): RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder>() {
 
     private val doctorsList = ArrayList<Doctor>()
 
@@ -54,12 +54,12 @@ class DoctorAdapter(private val listener: OnDoctorItemLongClick): RecyclerView.A
     inner class DoctorViewHolder(view: View):RecyclerView.ViewHolder(view) {
         init {
             view.setOnClickListener{
-                listener.onDoctorLongClick(doctorsList[adapterPosition], adapterPosition)
+                listener.onDoctorClick(doctorsList[adapterPosition], adapterPosition)
                 true
             }
         }
     }
 }
-interface OnDoctorItemLongClick{
-    fun onDoctorLongClick(doctor:Doctor,position: Int)
+interface OnDoctorItemClick{
+    fun onDoctorClick(doctor:Doctor,position: Int)
 }

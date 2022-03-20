@@ -10,14 +10,16 @@ import android.widget.TextView
 import android.widget.TimePicker
 import androidx.fragment.app.Fragment
 import com.example.aplikacjamedyczna.R
+import com.example.aplikacjamedyczna.data.Doctor
 import java.util.*
 
-class RegisterToVisitFragment : Fragment(R.layout.fragment_register_to_visit) {
+class RegisterToVisitFragment(doc:Doctor) : Fragment(R.layout.fragment_register_to_visit) {
     private lateinit var chooseData:Button
     private lateinit var chooseTime:Button
     private lateinit var registerToVisit:Button
     private lateinit var dataTextView: TextView
     private lateinit var timeTextView: TextView
+    private var doctor = doc
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -66,9 +68,14 @@ class RegisterToVisitFragment : Fragment(R.layout.fragment_register_to_visit) {
                 }
             ,hour,minute,false).show()
         }
+
+        registerToVisit.setOnClickListener {
+            val myFragment = ConfirmVisitRegisterFragment(doctor,allData,allTime)
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.flFragment, myFragment)
+                ?.addToBackStack(null)
+                ?.commit()
+        }
     }
-
-
 
 
 }

@@ -4,23 +4,22 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.aplikacjamedyczna.data.Doctor
+import com.example.aplikacjamedyczna.data.UsersData
 import com.example.aplikacjamedyczna.data.Visits
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.auth.User
-import com.google.firebase.ktx.Firebase
 
 class FirebaseRepository {
     private val auth = FirebaseAuth.getInstance()
     private val database = FirebaseFirestore.getInstance()
 
-    fun getUserData(): LiveData<User>{
-        val result = MutableLiveData<User>()
+    fun getUserData(): LiveData<UsersData>{
+        val result = MutableLiveData<UsersData>()
         val uid = auth.currentUser?.uid
         database.collection("users").document(uid!!)
             .get()
             .addOnSuccessListener {
-                val user: User? = it.toObject(User::class.java)
+                val user = it.toObject(UsersData::class.java)
                 result.postValue(user)
             }
             .addOnFailureListener {
@@ -51,10 +50,25 @@ class FirebaseRepository {
 
     fun getVisitData(): LiveData<List<Visits>>{
         val result = MutableLiveData<List<Visits>>()
-        database.collection("visits").get()
+        val uid = auth.currentUser?.uid
+        database.collection("visits").whereEqualTo("id_pac",uid).get()
             .addOnSuccessListener {
                 val visit = it.toObjects(Visits::class.java)
                 result.postValue(visit)
+            }
+            .addOnFailureListener {
+                Log.d("Repository",it.message.toString())
+            }
+        return result
+    }
+
+    fun getDoctorDataById(id:String):LiveData<Doctor>{
+        val result = MutableLiveData<Doctor>()
+        database.collection("doctors").document(id)
+            .get()
+            .addOnSuccessListener {
+                val doc = it.toObject(Doctor::class.java)
+                result.postValue(doc)
             }
             .addOnFailureListener {
                 Log.d("Repository",it.message.toString())

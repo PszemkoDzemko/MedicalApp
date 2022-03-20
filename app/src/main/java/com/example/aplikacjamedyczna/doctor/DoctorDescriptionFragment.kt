@@ -49,9 +49,12 @@ class DoctorDescriptionFragment(doctor:Doctor) : Fragment(R.layout.fragment_doct
             val newNrRat = doc.nrRating.toInt().plus(1)
             val newRat = doc.rating.toFloat().plus(docRatingBar.rating)
             fbRes.addDocRating(doc.uid.toString(),newRat.toString(),newNrRat.toString())
+            val myFragment = ShowDoctorsFragment()
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.flFragment, myFragment)
+                ?.detach(myFragment)?.attach(myFragment)?.commit()
         }
         registerToVisitButton.setOnClickListener{
-            val myFragment = RegisterToVisitFragment()
+            val myFragment = RegisterToVisitFragment(doc)
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.flFragment, myFragment)
                 ?.addToBackStack(null)
                 ?.commit()

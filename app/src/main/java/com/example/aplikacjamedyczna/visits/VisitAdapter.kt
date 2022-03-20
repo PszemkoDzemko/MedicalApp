@@ -1,61 +1,72 @@
 package com.example.aplikacjamedyczna.visits
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityManager
 import android.widget.TextView
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import com.example.aplikacjamedyczna.FirebaseRepository
 import com.example.aplikacjamedyczna.R
+import com.example.aplikacjamedyczna.data.Doctor
+import com.example.aplikacjamedyczna.data.Visits
 
-class VisitAdapter:RecyclerView.Adapter<VisitAdapter.MyViewHolder>()  {
-    private lateinit var visitId:ArrayList<String>
-    private lateinit var visitDoctorName:ArrayList<String>
-    private lateinit var visitDoctorSurname:ArrayList<String>
-    private lateinit var visitDoctorSpec:ArrayList<String>
-    private lateinit var visitDate:ArrayList<String>
-    private lateinit var visitTime:ArrayList<String>
-    private lateinit var view:View
+class VisitAdapter(viewLifecycleOwner: LifecycleOwner,private val listener: OnVisitItemClick):RecyclerView.Adapter<VisitAdapter.VisitViewHolder>()  {
 
-    fun setNewVisit(
-        visId: ArrayList<String>,
-        visDocName: ArrayList<String>,
-        visDocSurname: ArrayList<String>,
-        visDoctorSpec: ArrayList<String>,
-        visDate: ArrayList<String>,
-        visTime: ArrayList<String>,){
-        visitId=visId
-        visitDoctorName=visDocName
-        visitDoctorSurname=visDocSurname
-        visitDoctorSpec=visDoctorSpec
-        visitDate=visDate
-        visitTime=visTime
-    }
-    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        var visitCardViewLabel:TextView =  itemView.findViewById(R.id.visitCardViewLabel)
-        var visitDocNameCardView:TextView = itemView.findViewById(R.id.visitDocNameCardView)
-        var visitDocSurnameCardView:TextView = itemView.findViewById(R.id.visitDocSurnameCardView)
-        var visitDocSpecCardView:TextView = itemView.findViewById(R.id.visitDocSpecCardView)
-        var visitDateCardView:TextView = itemView.findViewById(R.id.visitDateCardView)
-        var visitTimeCardView:TextView = itemView.findViewById(R.id.visitTimeCardView)
+    private val respository = FirebaseRepository()
+    private val visitList = ArrayList<Visits>()
+    private val lifecycle = viewLifecycleOwner
+    @SuppressLint("NotifyDataSetChanged")
+    fun setVisits(list: List<Visits>){
+        visitList.clear()
+        visitList.addAll(list)
+        notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val inflater: LayoutInflater = LayoutInflater.from(parent.context)
-        view = inflater.inflate(R.layout.visits_card_view,parent,false)
-        return MyViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VisitAdapter.VisitViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val view = inflater.inflate(R.layout.visits_card_view,parent,false)
+        return VisitViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.visitCardViewLabel.text = visitId[position]
-        holder.visitDocNameCardView.text = visitDoctorName[position]
-        holder.visitDocSurnameCardView.text = visitDoctorSurname[position]
-        holder.visitDocSpecCardView.text = visitDoctorSpec[position]
-        holder.visitDateCardView.text = visitDate[position]
-        holder.visitTimeCardView.text = visitTime[position]
+    override fun onBindViewHolder(holder: VisitAdapter.VisitViewHolder, position: Int) {
+        bindData(holder)
+    }
+
+    private fun bindData(holder: VisitViewHolder) {
+        val docName = holder.itemView.findViewById<TextView>(R.id.visitDocNameCardView)
+        val docSurname = holder.itemView.findViewById<TextView>(R.id.visitDocSurnameCardView)
+        val docSpec = holder.itemView.findViewById<TextView>(R.id.visitDocSpecCardView)
+        val time = holder.itemView.findViewById<TextView>(R.id.visitTimeCardView)
+        val data = holder.itemView.findViewById<TextView>(R.id.visitDateCardView)
+        val idDoc = visitList[holder.adapterPosition].id_doc.toString()
+        val doc = respository.getDoctorDataById(idDoc)
+        doc.observe(lifecycle) { list ->
+            docName.text = list.name
+            docSurname.text = list.surname
+            docSpec.text = list.specialization
+        }
+        time.text = visitList[holder.adapterPosition].hour
+        data.text = visitList[holder.adapterPosition].data
     }
 
     override fun getItemCount(): Int {
-        return visitId.size
+        return visitList.size
     }
 
+    inner class VisitViewHolder(view:View):RecyclerView.ViewHolder(view){
+        init {
+            view.setOnClickListener{
+                listener.onVisitClick(visitList[adapterPosition], adapterPosition)
+                true
+            }
+        }
+    }
+}
+interface OnVisitItemClick{
+    fun onVisitClick(visits: Visits,position: Int)
 }

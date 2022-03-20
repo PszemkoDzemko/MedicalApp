@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aplikacjamedyczna.R
-import com.example.aplikacjamedyczna.data.User
+import com.example.aplikacjamedyczna.data.UsersData
 import com.example.aplikacjamedyczna.user.UserMainPage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -79,7 +79,7 @@ class UserDetails : AppCompatActivity() {
             var address = userCityRegister.text.toString()
             address += " "
             address += userAddressRegister.text.toString()
-            val user = User(uid,name,surname,pesel,phone,address)
+            val user = UsersData(uid,name,surname,pesel,phone,address)
             database.collection("users").document(uid).set(user).addOnSuccessListener {
                 val intent = Intent(applicationContext, UserMainPage::class.java)
                 startActivity(intent)
