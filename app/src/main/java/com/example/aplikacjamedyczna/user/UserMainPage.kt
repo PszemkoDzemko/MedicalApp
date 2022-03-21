@@ -7,7 +7,8 @@ import androidx.fragment.app.Fragment
 import com.example.aplikacjamedyczna.R
 import com.example.aplikacjamedyczna.doctor.ShowDoctorsFragment
 import com.example.aplikacjamedyczna.registration.UserDetails
-import com.example.aplikacjamedyczna.visits.VisitsFragment
+import com.example.aplikacjamedyczna.visits.NewVisitsFragment
+import com.example.aplikacjamedyczna.visits.OldVisitFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -20,17 +21,17 @@ class UserMainPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_main_page)
         val showDoctorsFragment = ShowDoctorsFragment()
-        val visitsFragment = VisitsFragment()
-        val registerToVisitFragment = VisitsFragment()
+        val newVisitsFragment = NewVisitsFragment()
+        val oldVisitFragment = OldVisitFragment()
         val profileFragment = ProfileFragment()
         setCurrentFragment(showDoctorsFragment)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.doctorsMenu -> setCurrentFragment(showDoctorsFragment)
-                R.id.visitMenu -> setCurrentFragment(visitsFragment)
-                R.id.registerToVisitMenu -> setCurrentFragment(registerToVisitFragment)
-                R.id.page_4 -> setCurrentFragment(registerToVisitFragment)
+                R.id.visitMenu -> setCurrentFragment(newVisitsFragment)
+                R.id.registerToVisitMenu -> setCurrentFragment(oldVisitFragment)
+                R.id.page_4 -> setCurrentFragment(oldVisitFragment)
                 R.id.profileMenu -> setCurrentFragment(profileFragment)
             }
             true

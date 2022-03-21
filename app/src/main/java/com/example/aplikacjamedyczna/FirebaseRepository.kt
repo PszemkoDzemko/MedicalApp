@@ -48,10 +48,24 @@ class FirebaseRepository {
 
     }
 
-    fun getVisitData(): LiveData<List<Visits>>{
+    fun getNewVisitData(): LiveData<List<Visits>>{
         val result = MutableLiveData<List<Visits>>()
         val uid = auth.currentUser?.uid
-        database.collection("visits").whereEqualTo("id_pac",uid).get()
+        database.collection("visits").whereEqualTo("id_pac",uid).whereEqualTo("done",false).get()
+            .addOnSuccessListener {
+                val visit = it.toObjects(Visits::class.java)
+                result.postValue(visit)
+            }
+            .addOnFailureListener {
+                Log.d("Repository",it.message.toString())
+            }
+        return result
+    }
+
+    fun getOldVisitData(): LiveData<List<Visits>>{
+        val result = MutableLiveData<List<Visits>>()
+        val uid = auth.currentUser?.uid
+        database.collection("visits").whereEqualTo("id_pac",uid).whereEqualTo("done",true).get()
             .addOnSuccessListener {
                 val visit = it.toObjects(Visits::class.java)
                 result.postValue(visit)
