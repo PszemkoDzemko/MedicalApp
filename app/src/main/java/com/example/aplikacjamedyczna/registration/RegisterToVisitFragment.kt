@@ -54,8 +54,10 @@ class RegisterToVisitFragment(doc:Doctor) : Fragment(R.layout.fragment_register_
                 },
                 year,
                 month,
-                day
-            ).show()
+                day,
+            )
+            dpd.datePicker.minDate = myCalendar.timeInMillis; // Lukasik zrobil
+            dpd.show();
         }
 
         chooseTime.setOnClickListener {
