@@ -64,6 +64,7 @@ class Register : AppCompatActivity() {
             fbAuth.createUserWithEmailAndPassword(mailRegistraterForm.text.toString().trim(),passwordRegistraterForm.text.toString().trim())
                 .addOnSuccessListener { authRes ->
                     if(authRes.user != null){
+                        authRes.user!!.sendEmailVerification()
                         val intent = Intent(applicationContext, UserMainPage::class.java).apply {
                             flags = (Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                         }
