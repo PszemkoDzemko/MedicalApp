@@ -10,16 +10,14 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplikacjamedyczna.FirebaseRepository
-import com.example.aplikacjamedyczna.MainActivity
 import com.example.aplikacjamedyczna.R
 import com.example.aplikacjamedyczna.data.Visits
-import com.example.aplikacjamedyczna.doctor.DoctorDescriptionFragment
 import com.google.firebase.firestore.FirebaseFirestore
 
-class NewVisitAdapter(viewLifecycleOwner: LifecycleOwner,acti: FragmentActivity?):RecyclerView.Adapter<NewVisitAdapter.VisitViewHolder>()  {
+class NewVisitAdapter(viewLifecycleOwner: LifecycleOwner, act: FragmentActivity?):RecyclerView.Adapter<NewVisitAdapter.VisitViewHolder>()  {
 
-    private val activity = acti
-    private val respository = FirebaseRepository()
+    private val activity = act
+    private val repository = FirebaseRepository()
     private val visitList = ArrayList<Visits>()
     private val lifecycle = viewLifecycleOwner
     private val database = FirebaseFirestore.getInstance()
@@ -49,7 +47,7 @@ class NewVisitAdapter(viewLifecycleOwner: LifecycleOwner,acti: FragmentActivity?
         val doneButton = holder.itemView.findViewById<Button>(R.id.newVisitDoneButton)
         val deleteButton = holder.itemView.findViewById<Button>(R.id.newVisitDeleteButton)
         val idDoc = visitList[holder.adapterPosition].id_doc.toString()
-        val doc = respository.getDoctorDataById(idDoc)
+        val doc = repository.getDoctorDataById(idDoc)
         doc.observe(lifecycle) { list ->
             docName.text = list.name
             docSurname.text = list.surname
