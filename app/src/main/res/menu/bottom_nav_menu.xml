@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/visitsMenu"
+        android:id="@+id/doctorsMenu"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_background"
-        android:title="@string/loginText"/>
+        android:title="Lekarze" />
     <item
-        android:id="@+id/page_2"
+        android:id="@+id/visitMenu"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="@string/loginText"/>
+        android:title="Wizyty" />
     <item
         android:id="@+id/registerToVisitMenu"
         android:enabled="true"
         android:icon="@drawable/ic_action_name"
-        android:title=""/>
+        android:title="Historia wizyt" />
     <item
-        android:id="@+id/page_4"
+        android:id="@+id/prescriptions"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="@string/registerLabel"/>
+        android:title="Recepty" />
     <item
-        android:id="@+id/page_5"
+        android:id="@+id/profileMenu"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="" />
+        android:title="Profil" />
 </menu>

@@ -1,4 +1,4 @@
-package com.example.aplikacjamedyczna
+package com.example.aplikacjamedyczna.registration
 
 import android.content.Context
 
