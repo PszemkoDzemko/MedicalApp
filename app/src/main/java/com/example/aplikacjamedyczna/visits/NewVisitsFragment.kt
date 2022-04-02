@@ -29,7 +29,6 @@ class NewVisitsFragment : Fragment() {
         respository.getNewVisitData().observe(viewLifecycleOwner) { list ->
             adapter.setVisits(list)
         }
-
     }
 
 }

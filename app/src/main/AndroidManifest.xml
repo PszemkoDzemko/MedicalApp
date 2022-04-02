@@ -22,7 +22,6 @@
         </activity>
         <activity android:name=".registration.Register"/>
         <activity android:name=".user.UserMainPage"/>
-        <activity android:name=".doctor.DoctorMainPage"/>
         <activity android:name=".registration.UserDetails"/>
     </application>
 </manifest>
