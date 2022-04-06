@@ -36,9 +36,9 @@ class UserDetails : AppCompatActivity() {
         userNameRegister = findViewById(R.id.userNameRegisterForm)
         userSurnameRegister = findViewById(R.id.userSurnameRegisterForm)
         userPeselRegister = findViewById(R.id.userPeselRegisterForm)
-        userPhoneRegister = findViewById(R.id.userPhoneRegisterForm)
-        userCityRegister = findViewById(R.id.userCityRegisterForm)
-        userAddressRegister = findViewById(R.id.userAddressRegisterForm)
+        userPhoneRegister = findViewById(R.id.userMailRegisterForm)
+        userCityRegister = findViewById(R.id.userPasswordRegisterForm)
+        userAddressRegister = findViewById(R.id.userRePasswordRegisterForm)
         userSaveButton = findViewById(R.id.userDataSaveButton)
         userSaveButton.setOnClickListener { addUserData() }
 
