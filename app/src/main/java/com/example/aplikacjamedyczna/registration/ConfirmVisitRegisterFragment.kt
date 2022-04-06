@@ -45,7 +45,7 @@ class ConfirmVisitRegisterFragment(doc:Doctor,data:String,time:String) : Fragmen
         doctorNameSurname.text = "${doctor.name} ${doctor.surname}"
         docSpec.text = "${doctor.specialization}"
         localization.text = "${doctor.localization}"
-        dataAndTime.text = "$visitData. $visitTime"
+        dataAndTime.text = "$visitData, $visitTime"
         confirmVisitButton.setOnClickListener {
             val visits = Visits(null,visitData,visitTime,userUid,doctor.uid)
             database.collection("visits").add(visits)

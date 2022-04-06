@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,18 @@ class ShowDoctorsFragment : Fragment(), OnDoctorItemClick {
         respository.getDoctorData().observe(viewLifecycleOwner) { list ->
             adapter.setDoctors(list)
         }
+        val searchView:SearchView = view.findViewById(R.id.doctorSearchView)
+        searchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
+            override fun onQueryTextChange(p0: String?): Boolean {
+                adapter.filter.filter(p0)
+                return true
+            }
+
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                adapter.filter.filter(p0)
+                return true
+            }
+        })
     }
 
     override fun onDoctorClick(doctor: Doctor, position: Int) {

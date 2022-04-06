@@ -1,23 +1,26 @@
 package com.example.aplikacjamedyczna.doctor
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aplikacjamedyczna.R
 import com.example.aplikacjamedyczna.data.Doctor
 
-class DoctorAdapter(private val listener: OnDoctorItemClick): RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder>() {
+class DoctorAdapter(private val listener: OnDoctorItemClick): RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder>(), Filterable {
 
-    private val doctorsList = ArrayList<Doctor>()
+    private var doctorsList = ArrayList<Doctor>()
+    private val doctorsListFilter = ArrayList<Doctor>()
 
-    @SuppressLint("NotifyDataSetChanged")
     fun setDoctors(list: List<Doctor>){
         doctorsList.clear()
+        doctorsListFilter.clear()
         doctorsList.addAll(list)
+        doctorsListFilter.addAll(list)
         notifyDataSetChanged()
     }
 
@@ -28,14 +31,11 @@ class DoctorAdapter(private val listener: OnDoctorItemClick): RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: DoctorViewHolder, position: Int) {
-        bindData(holder)
-    }
-
-    private fun bindData(holder: DoctorViewHolder) {
         val name = holder.itemView.findViewById<TextView>(R.id.nameCardDoctor)
         val surname = holder.itemView.findViewById<TextView>(R.id.surnameCardDoctor)
         val spec = holder.itemView.findViewById<TextView>(R.id.specCardDoctor)
         val rating = holder.itemView.findViewById<RatingBar>(R.id.ratingBar)
+        val localization = holder.itemView.findViewById<TextView>(R.id.localizationCardDoctor)
         val rat =(doctorsList[holder.adapterPosition].rating)?.toFloat()
         val nrRat = (doctorsList[holder.adapterPosition].nrRating)?.toFloat()
         if (rat != null) {
@@ -45,6 +45,7 @@ class DoctorAdapter(private val listener: OnDoctorItemClick): RecyclerView.Adapt
         name.text = doctorsList[holder.adapterPosition].name
         surname.text = doctorsList[holder.adapterPosition].surname
         spec.text = doctorsList[holder.adapterPosition].specialization
+        localization.text = doctorsList[holder.adapterPosition].localization
     }
 
     override fun getItemCount(): Int {
@@ -55,8 +56,37 @@ class DoctorAdapter(private val listener: OnDoctorItemClick): RecyclerView.Adapt
         init {
             view.setOnClickListener{
                 listener.onDoctorClick(doctorsList[adapterPosition], adapterPosition)
-                true
             }
+        }
+    }
+
+    override fun getFilter(): Filter {
+        return object: Filter(){
+            override fun performFiltering(charSequence: CharSequence): FilterResults {
+                val filterResult = FilterResults()
+                if(charSequence.length<0){
+                    filterResult.count = doctorsListFilter.size
+                    filterResult.values = doctorsListFilter
+                }else{
+                    val searchChr = charSequence.toString().lowercase()
+
+                    val data = ArrayList<Doctor>()
+                    for(doc in doctorsListFilter){
+                        if(doc.specialization!!.lowercase().contains(searchChr) || doc.name!!.lowercase().contains(searchChr)||doc.surname!!.lowercase().contains(searchChr)||doc.localization!!.lowercase().contains(searchChr)){
+                            data.add(doc)
+                        }
+                    }
+                    filterResult.count = data.size
+                    filterResult.values = data
+                }
+                return filterResult
+            }
+
+            override fun publishResults(constrain: CharSequence?, p1: FilterResults?) {
+                doctorsList = p1!!.values as ArrayList<Doctor>
+                notifyDataSetChanged()
+            }
+
         }
     }
 }

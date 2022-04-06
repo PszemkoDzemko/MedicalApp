@@ -13,10 +13,10 @@ import com.example.aplikacjamedyczna.R
 import com.example.aplikacjamedyczna.data.Visits
 import com.google.firebase.firestore.FirebaseFirestore
 
-class OldVisitAdapter(viewLifecycleOwner: LifecycleOwner,acti:FragmentActivity?):RecyclerView.Adapter<OldVisitAdapter.VisitViewHolder>() {
+class OldVisitAdapter(viewLifecycleOwner: LifecycleOwner, act:FragmentActivity?):RecyclerView.Adapter<OldVisitAdapter.VisitViewHolder>() {
 
-    private val activity = acti
-    private val respository = FirebaseRepository()
+    private val activity = act
+    private val repository = FirebaseRepository()
     private val visitList = ArrayList<Visits>()
     private val lifecycle = viewLifecycleOwner
     private val database = FirebaseFirestore.getInstance()
@@ -45,7 +45,7 @@ class OldVisitAdapter(viewLifecycleOwner: LifecycleOwner,acti:FragmentActivity?)
         val data = holder.itemView.findViewById<TextView>(R.id.oldVisitDateCardView)
         val deleteButton = holder.itemView.findViewById<TextView>(R.id.oldVisitDeleteButton)
         val idDoc = visitList[holder.adapterPosition].id_doc.toString()
-        val doc = respository.getDoctorDataById(idDoc)
+        val doc = repository.getDoctorDataById(idDoc)
         doc.observe(lifecycle) { list ->
             docName.text = list.name
             docSurname.text = list.surname

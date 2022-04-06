@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.aplikacjamedyczna.data.Doctor
+import com.example.aplikacjamedyczna.data.Prescription
 import com.example.aplikacjamedyczna.data.UsersData
 import com.example.aplikacjamedyczna.data.Visits
 import com.google.firebase.auth.FirebaseAuth
@@ -83,6 +84,19 @@ class FirebaseRepository {
             .addOnSuccessListener {
                 val doc = it.toObject(Doctor::class.java)
                 result.postValue(doc)
+            }
+            .addOnFailureListener {
+                Log.d("Repository",it.message.toString())
+            }
+        return result
+    }
+    fun getPrescriptionData(): LiveData<List<Prescription>>{
+        val result = MutableLiveData<List<Prescription>>()
+        val uid = auth.currentUser?.uid
+        database.collection("prescription").whereEqualTo("id_pac",uid).get()
+            .addOnSuccessListener {
+                val prescription = it.toObjects(Prescription::class.java)
+                result.postValue(prescription)
             }
             .addOnFailureListener {
                 Log.d("Repository",it.message.toString())

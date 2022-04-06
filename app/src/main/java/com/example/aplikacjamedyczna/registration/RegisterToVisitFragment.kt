@@ -68,7 +68,7 @@ class RegisterToVisitFragment(doc:Doctor) : Fragment(R.layout.fragment_register_
                     allTime = "$myHour:$myMinute"
                     timeTextView.text = allTime
                 }
-            ,hour,minute,false).show()
+            ,hour,minute,true).show()
         }
 
         registerToVisit.setOnClickListener {
