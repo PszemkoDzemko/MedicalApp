@@ -101,9 +101,10 @@ class NewVisitAdapter(viewLifecycleOwner: LifecycleOwner, act: FragmentActivity?
                         allData = "$myYear/$myMonth/$myDay"
                         database.collection("visits").document(visitList[holder.adapterPosition].id.toString()).update("data",allData)
                         val myFragment = NewVisitsFragment()
-                        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.flFragment, myFragment)
-                            ?.addToBackStack(null)
-                            ?.commit()
+                        activity.supportFragmentManager.beginTransaction()
+                            .replace(R.id.flFragment, myFragment)
+                            .addToBackStack(null)
+                            .commit()
                     },
                     year,
                     month,
