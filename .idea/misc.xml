@@ -26,7 +26,9 @@
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/fragment_first.xml" value="0.2558876811594203" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/fragment_new_visits.xml" value="0.26222826086956524" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/fragment_old_visit.xml" value="0.26222826086956524" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/fragment_prescription.xml" value="0.24592391304347827" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/fragment_profile.xml" value="0.26222826086956524" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/fragment_referral.xml" value="0.2848731884057971" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/fragment_register_to_visit.xml" value="0.2558876811594203" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/fragment_search.xml" value="0.2558876811594203" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/fragment_second.xml" value="0.2558876811594203" />
@@ -37,6 +39,8 @@
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/mainuserpage.xml" value="0.22" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/new_visits_card_view.xml" value="0.26222826086956524" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/old_visits_card_view.xml" value="0.5" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/prescription_card_view.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/referral_card_view.xml" value="0.2848731884057971" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/registration.xml" value="0.23588039867109634" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/user_details.xml" value="0.27355072463768115" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/AplikacjaMedyczna/app/src/main/res/layout/user_main_page.xml" value="0.2" />

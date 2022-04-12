@@ -23,7 +23,7 @@ class UserMainPage : AppCompatActivity() {
         val showDoctorsFragment = ShowDoctorsFragment()
         val newVisitsFragment = NewVisitsFragment()
         val oldVisitFragment = OldVisitFragment()
-        val prescriptionFragment = PrescriptionFragment()
+        val prescriptionFragment = ReferralFragment()
         val profileFragment = ProfileFragment()
         setCurrentFragment(showDoctorsFragment)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)

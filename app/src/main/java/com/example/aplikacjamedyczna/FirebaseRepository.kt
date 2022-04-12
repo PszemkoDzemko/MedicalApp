@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.aplikacjamedyczna.data.Doctor
-import com.example.aplikacjamedyczna.data.Prescription
+import com.example.aplikacjamedyczna.data.Referral
 import com.example.aplikacjamedyczna.data.UsersData
 import com.example.aplikacjamedyczna.data.Visits
 import com.google.firebase.auth.FirebaseAuth
@@ -90,12 +90,12 @@ class FirebaseRepository {
             }
         return result
     }
-    fun getPrescriptionData(): LiveData<List<Prescription>>{
-        val result = MutableLiveData<List<Prescription>>()
+    fun getReferralData(): LiveData<List<Referral>>{
+        val result = MutableLiveData<List<Referral>>()
         val uid = auth.currentUser?.uid
-        database.collection("prescription").whereEqualTo("id_pac",uid).get()
+        database.collection("referral").whereEqualTo("id_pac",uid).get()
             .addOnSuccessListener {
-                val prescription = it.toObjects(Prescription::class.java)
+                val prescription = it.toObjects(Referral::class.java)
                 result.postValue(prescription)
             }
             .addOnFailureListener {
