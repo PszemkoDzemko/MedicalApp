@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/activity_main.xml" value="0.3484375" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/doctors_card_view.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_confirm_visit_register.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_doctor_description.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_new_visit.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_old_visit.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_profile.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_referral.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_register_to_visit.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_show_doctors.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/new_visit_card_view.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/old_visit_card_viwe.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/referral_card_view.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/registration.xml" value="0.26358695652173914" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/user_details.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/user_main_page.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

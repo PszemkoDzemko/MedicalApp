@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/doctorsMenu"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="Lekarze" />
+    <item
+        android:id="@+id/visitMenu"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Wizyty" />
+    <item
+        android:id="@+id/registerToVisitMenu"
+        android:enabled="true"
+        android:title="Historia wizyt" />
+    <item
+        android:id="@+id/prescriptions"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Recepty" />
+    <item
+        android:id="@+id/profileMenu"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Profil" />
+</menu>

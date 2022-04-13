@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Medical Application</string>
+    <string name="loginText">Log In</string>
+    <string name="passwordHint">Password</string>
+    <string name="mailHint">E-Mail</string>
+    <string name="buttonLogin">Log in</string>
+    <string name="signinLabel">Don\'t have an account yet? Sign Up</string>
+    <string name="registerLabel">Register</string>
+    <string name="nameText">Name</string>
+    <string name="surnameText">Surname</string>
+    <string name="phoneHint">Phone</string>
+    <string name="repasswordHint">Rewrite Password</string>
+    <string name="buttonRegister">Register</string>
+    <string name="loginLabel">Alredy have account? Log In</string>
+    <string name="welcomeMessage">Welcome %1$s</string>
+    <string name="logoutText">Log Out</string>
+    <string name="searchHint">Search</string>
+    <string name="doctorRegisterLabel">Doctor? SignUp here</string>
+    <string name="backToLogin">Back to login screen</string>
+    <string name="userDetails">Add more your data</string>
+    <string name="peselHint">Pesel</string>
+    <string name="emptyError">This field cannot be empty</string>
+    <string name="notSamePasswordError">Passwords are not the same</string>
+    <string name="saveData">Save</string>
+    <string name="cityHint">City</string>
+    <string name="addressHint">Address</string>
+    <string name="visitRegister">Register to Visit</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
