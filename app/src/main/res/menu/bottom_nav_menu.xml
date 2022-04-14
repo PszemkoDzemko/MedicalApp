@@ -19,7 +19,7 @@
         android:id="@+id/prescriptions"
         android:enabled="true"
         android:icon="@drawable/refferal_menu"
-        android:title="@string/referral" />
+        android:title="@string/info" />
     <item
         android:id="@+id/profileMenu"
         android:enabled="true"

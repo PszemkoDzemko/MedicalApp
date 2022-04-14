@@ -47,14 +47,14 @@
     <string name="changeDate">Change date</string>
     <string name="changeTime">Change time</string>
     <string name="eReferral">E-Referral</string>
-    <string name="reason">Reason</string>
+    <string name="reason">Reason:</string>
     <string name="dateOfIssue">Date of issue:</string>
-    <string name="referral">Referral</string>
+    <string name="info">Information</string>
     <string name="doctorsMenu">Doctors</string>
     <string name="visitsMenu">Visits</string>
     <string name="oldVisitsMenu">Old Visits</string>
     <string name="referralMenu">Referral</string>
     <string name="profileMenu">Profile</string>
-    <string name="opinion">Opinions</string>
+    <string name="opinion">" Opinions"</string>
     <string name="changesBeenSaved">Changes have been saved.</string>
 </resources>
