@@ -41,7 +41,6 @@ class RegisterToVisitFragment(doc: Doctor) : Fragment(R.layout.fragment_register
         var myDay = 0
         var allData = ""
         var allTime = ""
-
         chooseData.setOnClickListener {
             val dpd = DatePickerDialog(
                 requireContext(),

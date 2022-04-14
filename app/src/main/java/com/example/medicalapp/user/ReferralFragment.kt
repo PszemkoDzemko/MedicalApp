@@ -12,7 +12,7 @@ import com.example.medicalapp.R
 
 class ReferralFragment : Fragment() {
     private lateinit var adapter:ReferralAdapter
-    private val respository: FirebaseRepository = FirebaseRepository()
+    private val repository: FirebaseRepository = FirebaseRepository()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_referral, container, false)
@@ -24,7 +24,7 @@ class ReferralFragment : Fragment() {
         adapter = ReferralAdapter(viewLifecycleOwner,activity)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
-        respository.getReferralData().observe(viewLifecycleOwner) { list ->
+        repository.getReferralData().observe(viewLifecycleOwner) { list ->
             adapter.setPrescription(list)
         }
 

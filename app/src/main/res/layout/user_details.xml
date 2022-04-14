@@ -21,7 +21,9 @@
         android:id="@+id/userNameRegisterForm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/nameText"
@@ -35,7 +37,9 @@
         android:id="@+id/userMailRegisterForm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/phoneHint"
@@ -47,10 +51,12 @@
         app:layout_constraintTop_toBottomOf="@+id/userPeselRegisterForm" />
 
     <EditText
-        android:id="@+id/userPasswordRegisterForm"
+        android:id="@+id/userCityRegisterForm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/cityHint"
@@ -62,10 +68,12 @@
         app:layout_constraintTop_toBottomOf="@+id/userMailRegisterForm" />
 
     <EditText
-        android:id="@+id/userRePasswordRegisterForm"
+        android:id="@+id/userAddressRegisterForm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/addressHint"
@@ -74,14 +82,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userPasswordRegisterForm"
+        app:layout_constraintTop_toBottomOf="@+id/userCityRegisterForm"
         tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/userSurnameRegisterForm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/surnameText"
@@ -101,14 +111,16 @@
         android:text="@string/saveData"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userRePasswordRegisterForm"
+        app:layout_constraintTop_toBottomOf="@+id/userAddressRegisterForm"
         tools:ignore="DuplicateSpeakableTextCheck,DuplicateSpeakableTextCheck" />
 
     <EditText
         android:id="@+id/userPeselRegisterForm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/peselHint"
@@ -124,7 +136,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Wyloguj się"
+        android:text="@string/logoutText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,6 +1,9 @@
 package com.example.medicalapp.doctor
 
+import android.location.Address
+import android.location.Geocoder
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
@@ -21,6 +24,7 @@ import com.squareup.picasso.Picasso
 
 class DoctorDescriptionFragment(doctor: Doctor) : Fragment(R.layout.fragment_doctor_description),
     OnMapReadyCallback {
+    private lateinit var mMap: GoogleMap
     private val doc = doctor
     private val fbRes = FirebaseRepository()
     private lateinit var docName: TextView
@@ -32,7 +36,6 @@ class DoctorDescriptionFragment(doctor: Doctor) : Fragment(R.layout.fragment_doc
     private lateinit var rateButton: Button
     private lateinit var registerToVisitButton: Button
 
-    private lateinit var mMap: GoogleMap
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         docName = view.findViewById(R.id.docDescNameLabel)
@@ -44,7 +47,6 @@ class DoctorDescriptionFragment(doctor: Doctor) : Fragment(R.layout.fragment_doc
         nrRat = view.findViewById(R.id.nrRatTextView)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
         if(doc.img.toString().isEmpty()){
             docImg.setImageResource(R.drawable.defaultdoc)
         }else{
@@ -54,7 +56,7 @@ class DoctorDescriptionFragment(doctor: Doctor) : Fragment(R.layout.fragment_doc
         docName.text = doc.name
         docSurname.text = doc.surname
         docSpec.text = doc.specialization
-        nrRat.text = doc.nrRating + " Opinia"
+        nrRat.text = doc.nrRating + getString(R.string.opinion)
         val rat = doc.rating?.toFloat()!! / doc.nrRating?.toFloat()!!
         docRatingBar.rating = rat
         rateButton.setOnClickListener {
@@ -71,19 +73,21 @@ class DoctorDescriptionFragment(doctor: Doctor) : Fragment(R.layout.fragment_doc
                 ?.addToBackStack(null)
                 ?.commit()
         }
-    }
 
+    }
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(
-            MarkerOptions()
-                .position(sydney)
-                .title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val geocoder = Geocoder(activity?.applicationContext)
+        var addressList:List<Address>?=null
+        if (doc.localization.toString().isNotEmpty()){
+            addressList=geocoder.getFromLocationName(doc.localization,1)
+        }else{
+            addressList=geocoder.getFromLocationName("Polska",1)
+        }
+        val address = addressList!![0]
+        val latLng = LatLng(address.latitude,address.longitude)
+        mMap.addMarker(MarkerOptions().position(latLng).title(doc.localization))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,13F))
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15F),2000,null)
     }
-
-
 }

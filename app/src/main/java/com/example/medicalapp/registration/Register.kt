@@ -26,8 +26,8 @@ class Register : AppCompatActivity() {
         setContentView(R.layout.registration)
         emptyError = getString(R.string.emptyError)
         mailRegistraterForm = findViewById(R.id.userMailRegisterForm)
-        passwordRegistraterForm = findViewById(R.id.userPasswordRegisterForm)
-        repasswordRegistraterForm = findViewById(R.id.userRePasswordRegisterForm)
+        passwordRegistraterForm = findViewById(R.id.userCityRegisterForm)
+        repasswordRegistraterForm = findViewById(R.id.userAddressRegisterForm)
         registerButton = findViewById(R.id.userDataSaveButton)
         toLoginLabel = findViewById(R.id.backToRegister)
         validation = Validation(applicationContext)
@@ -54,9 +54,7 @@ class Register : AppCompatActivity() {
         }
         if (!validation.matchPasswordValidation(
                 passwordRegistraterForm.text.toString().trim(),
-                repasswordRegistraterForm.text.toString().trim()
-            )
-        ) {
+                repasswordRegistraterForm.text.toString().trim())) {
             repasswordRegistraterForm.error = getString(R.string.notSamePasswordError)
             errors++
         }

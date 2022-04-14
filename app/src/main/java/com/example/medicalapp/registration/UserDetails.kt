@@ -32,15 +32,14 @@ class UserDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_details)
-
         validation = Validation(activity)
         emptyError = getString(R.string.emptyError)
         userNameRegister = findViewById(R.id.userNameRegisterForm)
         userSurnameRegister = findViewById(R.id.userSurnameRegisterForm)
         userPeselRegister = findViewById(R.id.userPeselRegisterForm)
         userPhoneRegister = findViewById(R.id.userMailRegisterForm)
-        userCityRegister = findViewById(R.id.userPasswordRegisterForm)
-        userAddressRegister = findViewById(R.id.userRePasswordRegisterForm)
+        userCityRegister = findViewById(R.id.userCityRegisterForm)
+        userAddressRegister = findViewById(R.id.userAddressRegisterForm)
         userSaveButton = findViewById(R.id.userDataSaveButton)
         logOutButton = findViewById(R.id.logOutDetailsButton)
         userSaveButton.setOnClickListener { addUserData() }

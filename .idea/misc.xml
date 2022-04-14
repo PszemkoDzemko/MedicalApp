@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/drawable/doctor_menu.xml" value="0.253" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/drawable/old_visit_menu.xml" value="0.253" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/drawable/profile_menu.xml" value="0.253" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/drawable/refferal_menu.xml" value="0.253" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/activity_main.xml" value="0.3484375" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/doctors_card_view.xml" value="0.3625" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_confirm_visit_register.xml" value="0.3625" />
@@ -13,7 +17,7 @@
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_referral.xml" value="0.3625" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_register_to_visit.xml" value="0.3625" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_show_doctors.xml" value="0.3625" />
-        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/new_visit_card_view.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/new_visit_card_view.xml" value="0.33" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/old_visit_card_view.xml" value="0.2418478260869565" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/old_visit_card_viwe.xml" value="0.3625" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/referral_card_view.xml" value="0.3625" />

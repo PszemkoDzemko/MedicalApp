@@ -13,7 +13,7 @@ import com.example.medicalapp.R
 class OldVisitFragment : Fragment() {
 
     private lateinit var adapter:OldVisitAdapter
-    private val respository = FirebaseRepository()
+    private val repository = FirebaseRepository()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_old_visit, container, false)
@@ -25,7 +25,7 @@ class OldVisitFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.oldVisitRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
-        respository.getOldVisitData().observe(viewLifecycleOwner) { list ->
+        repository.getOldVisitData().observe(viewLifecycleOwner) { list ->
             adapter.setVisits(list)
         }
 

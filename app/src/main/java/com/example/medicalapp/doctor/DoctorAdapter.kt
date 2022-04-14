@@ -70,7 +70,6 @@ class DoctorAdapter(private val listener: OnDoctorItemClick): RecyclerView.Adapt
                     filterResult.values = doctorsListFilter
                 }else{
                     val searchChr = charSequence.toString().lowercase()
-
                     val data = ArrayList<Doctor>()
                     for(doc in doctorsListFilter){
                         if(doc.specialization!!.lowercase().contains(searchChr) || doc.name!!.lowercase().contains(searchChr)||doc.surname!!.lowercase().contains(searchChr)||doc.localization!!.lowercase().contains(searchChr)){

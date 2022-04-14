@@ -3,25 +3,26 @@
     <item
         android:id="@+id/doctorsMenu"
         android:enabled="true"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="Lekarze" />
+        android:icon="@drawable/doctor_menu"
+        android:title="@string/doctorsMenu" />
     <item
         android:id="@+id/visitMenu"
         android:enabled="true"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="Wizyty" />
+        android:icon="@drawable/new_visit_menu"
+        android:title="@string/visitsMenu" />
     <item
         android:id="@+id/registerToVisitMenu"
         android:enabled="true"
-        android:title="Historia wizyt" />
+        android:icon="@drawable/old_visit_menu"
+        android:title="@string/oldVisitsMenu" />
     <item
         android:id="@+id/prescriptions"
         android:enabled="true"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="Recepty" />
+        android:icon="@drawable/refferal_menu"
+        android:title="@string/referral" />
     <item
         android:id="@+id/profileMenu"
         android:enabled="true"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="Profil" />
+        android:icon="@drawable/profile_menu"
+        android:title="@string/profileMenu" />
 </menu>

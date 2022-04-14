@@ -14,7 +14,7 @@
             android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Stare Wizyty"
+            android:text="@string/oldVisits"
             android:textAlignment="center"
             android:textSize="20sp" />
 

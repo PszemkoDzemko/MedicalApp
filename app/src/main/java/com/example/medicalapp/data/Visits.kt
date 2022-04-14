@@ -5,5 +5,4 @@ data class Visits(val id:String? = null,
                   val hour:String? = null,
                   val id_pac:String? = null,
                   val id_doc:String? = null,
-                  val done:Boolean = false
-)
+                  val done:Boolean = false)

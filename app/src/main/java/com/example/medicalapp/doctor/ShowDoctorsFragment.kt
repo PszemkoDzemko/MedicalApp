@@ -14,7 +14,7 @@ import com.example.medicalapp.data.Doctor
 
 class ShowDoctorsFragment : Fragment(), OnDoctorItemClick {
 
-    private val respository = FirebaseRepository()
+    private val repository = FirebaseRepository()
     private val adapter = DoctorAdapter(this)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -26,7 +26,7 @@ class ShowDoctorsFragment : Fragment(), OnDoctorItemClick {
         val recyclerView = view.findViewById<RecyclerView>(R.id.doctorsRecycleView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
-        respository.getDoctorData().observe(viewLifecycleOwner) { list ->
+        repository.getDoctorData().observe(viewLifecycleOwner) { list ->
             adapter.setDoctors(list)
         }
         val searchView: SearchView = view.findViewById(R.id.doctorSearchView)
@@ -35,7 +35,6 @@ class ShowDoctorsFragment : Fragment(), OnDoctorItemClick {
                 adapter.filter.filter(p0)
                 return true
             }
-
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 adapter.filter.filter(p0)
                 return true
@@ -49,6 +48,4 @@ class ShowDoctorsFragment : Fragment(), OnDoctorItemClick {
             ?.addToBackStack(null)
             ?.commit()
     }
-
-
 }

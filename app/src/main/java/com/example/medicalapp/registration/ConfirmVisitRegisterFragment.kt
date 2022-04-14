@@ -4,9 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.example.medicalapp.FirebaseRepository
@@ -29,7 +27,7 @@ class ConfirmVisitRegisterFragment(doc: Doctor, data:String, time:String) : Frag
     private lateinit var localization: TextView
     private lateinit var dataAndTime: TextView
     private lateinit var confirmVisitButton: Button
-    private val respository = FirebaseRepository()
+    private val repository = FirebaseRepository()
     private var userUid = ""
     private var database = Firebase.firestore
     @SuppressLint("SetTextI18n")
@@ -41,7 +39,7 @@ class ConfirmVisitRegisterFragment(doc: Doctor, data:String, time:String) : Frag
         localization = view.findViewById(R.id.localizationConfirmVisitFragmentTextView)
         dataAndTime = view.findViewById(R.id.dataAndTimeConfirmVisitFragmentTextView)
         confirmVisitButton = view.findViewById(R.id.confirmVisitButton)
-        respository.getUserData().observe(viewLifecycleOwner){user->
+        repository.getUserData().observe(viewLifecycleOwner){ user->
             bindUserData(user)
         }
         doctorNameSurname.text = "${doctor.name} ${doctor.surname}"
@@ -65,7 +63,6 @@ class ConfirmVisitRegisterFragment(doc: Doctor, data:String, time:String) : Frag
                 }
         }
     }
-
     @SuppressLint("SetTextI18n")
     private fun bindUserData(user: UsersData) {
         patientNameSurname.text = "${user.name} ${user.surname}"

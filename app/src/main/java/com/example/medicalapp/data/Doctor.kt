@@ -8,5 +8,4 @@ data class Doctor(val uid:String?=null,
                   val PWZ:String?=null,
                   val rating:String?=null,
                   val nrRating:String?=null,
-                  val img:String?=null
-)
+                  val img:String?=null)

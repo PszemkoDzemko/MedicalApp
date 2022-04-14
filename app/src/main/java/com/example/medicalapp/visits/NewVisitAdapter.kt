@@ -48,7 +48,6 @@ class NewVisitAdapter(viewLifecycleOwner: LifecycleOwner, act: FragmentActivity?
         val docSpec = holder.itemView.findViewById<TextView>(R.id.newVisitDocSpecCardView)
         val time = holder.itemView.findViewById<TextView>(R.id.newVisitTimeCardView)
         val data = holder.itemView.findViewById<TextView>(R.id.newVisitDateCardView)
-        val doneButton = holder.itemView.findViewById<Button>(R.id.newVisitDoneCardViewButton)
         val deleteButton = holder.itemView.findViewById<Button>(R.id.newVisitDeleteCardViewButton)
         val timeChangeButton = holder.itemView.findViewById<Button>(R.id.newVisitTimeCardViewButton)
         val dataChangeButton = holder.itemView.findViewById<Button>(R.id.newVisitDateCardViewButton)
@@ -74,13 +73,6 @@ class NewVisitAdapter(viewLifecycleOwner: LifecycleOwner, act: FragmentActivity?
         }
         time.text = visitList[holder.adapterPosition].hour
         data.text = visitList[holder.adapterPosition].data
-        doneButton.setOnClickListener {
-            database.collection("visits").document(visitList[holder.adapterPosition].id.toString()).update("done",true)
-            val myFragment = NewVisitFragment()
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.flFragment, myFragment)
-                ?.addToBackStack(null)
-                ?.commit()
-        }
         deleteButton.setOnClickListener {
             database.collection("visits").document(visitList[holder.adapterPosition].id.toString()).delete()
             val myFragment = NewVisitFragment()

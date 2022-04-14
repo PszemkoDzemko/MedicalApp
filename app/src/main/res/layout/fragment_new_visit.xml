@@ -14,7 +14,7 @@
             android:id="@+id/textView10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nowe Wizyty"
+            android:text="@string/newVisits"
             android:textAlignment="center"
             android:textSize="20sp" />
 
