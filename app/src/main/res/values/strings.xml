@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Medical Application</string>
+    <string name="app_name" translatable="false">Medopek</string>
     <string name="loginText">Log In</string>
     <string name="passwordHint">Password</string>
     <string name="mailHint">E-Mail</string>

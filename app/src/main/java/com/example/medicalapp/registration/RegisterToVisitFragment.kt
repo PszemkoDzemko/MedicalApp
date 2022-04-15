@@ -48,7 +48,15 @@ class RegisterToVisitFragment(doc: Doctor) : Fragment(R.layout.fragment_register
                     myYear = selectedYear
                     myMonth = selectedMonth+1
                     myDay = selectedDayOfMonth
-                    allData = "$myYear/$myMonth/$myDay"
+                    if(myMonth<10){
+                        if(myDay<10){
+                            allData = "$myYear-0$myMonth-0$myDay"
+                        }else {
+                            allData = "$myYear-0$myMonth-$myDay"
+                        }
+                    }else{
+                        allData = "$myYear-$myMonth-$myDay"
+                    }
                     dataTextView.text = allData
                 },
                 year,
@@ -64,7 +72,11 @@ class RegisterToVisitFragment(doc: Doctor) : Fragment(R.layout.fragment_register
                 requireContext(), { view, selectedHour, selectedMin->
                     myHour = selectedHour
                     myMinute = selectedMin
-                    allTime = "$myHour:$myMinute"
+                    if(myMinute<10){
+                        allTime = "$myHour:0$myMinute"
+                    }else{
+                        allTime = "$myHour:$myMinute"
+                    }
                     timeTextView.text = allTime
                 }
                 ,hour,minute,true).show()
