@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
@@ -54,11 +55,24 @@ class OldVisitAdapter(viewLifecycleOwner: LifecycleOwner, act: FragmentActivity?
         time.text = visitList[holder.adapterPosition].hour
         data.text = visitList[holder.adapterPosition].data
         deleteButton.setOnClickListener {
-            database.collection("visits").document(visitList[holder.adapterPosition].id.toString()).delete()
-            val myFragment = OldVisitFragment()
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.flFragment, myFragment)
-                ?.addToBackStack(null)
-                ?.commit()
+            val sureToDelete = LayoutInflater.from(holder.itemView.context).inflate(R.layout.sure_to_delete,null)
+            AlertDialog.Builder(holder.itemView.context)
+                .setView(sureToDelete)
+                .setPositiveButton("OK"){
+                        dialog, _ ->
+                    database.collection("visits").document(visitList[holder.adapterPosition].id.toString()).delete()
+                    val myFragment = OldVisitFragment()
+                    activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.flFragment, myFragment)
+                        ?.addToBackStack(null)
+                        ?.commit()
+                    dialog.dismiss()
+                }
+                .setNegativeButton(R.string.cancel){
+                        dialog,_ ->
+                    dialog.dismiss()
+                }
+                .create()
+                .show()
         }
     }
 

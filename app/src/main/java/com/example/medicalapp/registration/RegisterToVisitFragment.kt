@@ -34,11 +34,11 @@ class RegisterToVisitFragment(doc: Doctor) : Fragment(R.layout.fragment_register
         val day = myCalendar.get(Calendar.DAY_OF_MONTH)
         val hour = myCalendar.get(Calendar.HOUR_OF_DAY)
         val minute = myCalendar.get(Calendar.MINUTE)
-        var myHour = 0
-        var myMinute = 0
-        var myYear = 0
-        var myMonth = 0
-        var myDay = 0
+        var myHour: Int
+        var myMinute: Int
+        var myYear: Int
+        var myMonth: Int
+        var myDay: Int
         var allData = ""
         var allTime = ""
         chooseData.setOnClickListener {
@@ -48,16 +48,16 @@ class RegisterToVisitFragment(doc: Doctor) : Fragment(R.layout.fragment_register
                     myYear = selectedYear
                     myMonth = selectedMonth+1
                     myDay = selectedDayOfMonth
-                    if(myMonth<10){
+                    allData = if(myMonth<10){
                         if(myDay<10){
-                            allData = "$myYear-0$myMonth-0$myDay"
+                            "$myYear-0$myMonth-0$myDay"
                         }else {
-                            allData = "$myYear-0$myMonth-$myDay"
+                            "$myYear-0$myMonth-$myDay"
                         }
                     }else if(myDay<10){
-                        allData = "$myYear-$myMonth-0$myDay"
+                        "$myYear-$myMonth-0$myDay"
                     }else{
-                        allData = "$myYear-$myMonth-$myDay"
+                        "$myYear-$myMonth-$myDay"
                     }
                     dataTextView.text = allData
                 },
@@ -74,16 +74,16 @@ class RegisterToVisitFragment(doc: Doctor) : Fragment(R.layout.fragment_register
                 requireContext(), { view, selectedHour, selectedMin->
                     myHour = selectedHour
                     myMinute = selectedMin
-                    if(myHour<10){
+                    allTime = if(myHour<10){
                         if(myMinute<10){
-                            allTime = "0$myHour:0$myMinute"
+                            "0$myHour:0$myMinute"
                         }else{
-                            allTime = "0$myHour:$myMinute"
+                            "0$myHour:$myMinute"
                         }
                     }else if(myMinute<10){
-                        allTime = "$myHour:0$myMinute"
+                        "$myHour:0$myMinute"
                     }else{
-                        allTime = "$myHour:$myMinute"
+                        "$myHour:$myMinute"
                     }
 
                     timeTextView.text = allTime

@@ -26,8 +26,9 @@ class NewVisitFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
         repository.getNewVisitData().observe(viewLifecycleOwner) { list ->
-            adapter.setVisits(list)
+            adapter.setVisits(list.sortedBy { it.data })
         }
+
     }
 
 }

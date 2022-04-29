@@ -93,7 +93,7 @@ class FirebaseRepository {
     fun getReferralData(): LiveData<List<Referral>> {
         val result = MutableLiveData<List<Referral>>()
         val uid = auth.currentUser?.uid
-        database.collection("referral").whereEqualTo("id_pac",uid).get()
+        database.collection("referral").whereEqualTo("id_pac",uid).whereEqualTo("done",false).get()
             .addOnSuccessListener {
                 val prescription = it.toObjects(Referral::class.java)
                 result.postValue(prescription)

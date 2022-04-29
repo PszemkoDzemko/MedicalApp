@@ -2,6 +2,8 @@ package com.example.medicalapp.user
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.medicalapp.R
@@ -9,10 +11,12 @@ import com.example.medicalapp.doctor.ShowDoctorsFragment
 import com.example.medicalapp.registration.UserDetails
 import com.example.medicalapp.visits.NewVisitFragment
 import com.example.medicalapp.visits.OldVisitFragment
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 
 class UserMainPage : AppCompatActivity() {
     private val fbAuth = FirebaseAuth.getInstance()

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LifecycleOwner
@@ -11,13 +12,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.medicalapp.FirebaseRepository
 import com.example.medicalapp.R
 import com.example.medicalapp.data.Referral
+import com.example.medicalapp.visits.NewVisitFragment
+import com.google.firebase.firestore.FirebaseFirestore
 
-class ReferralAdapter(viewLifecycleOwner: LifecycleOwner, act: FragmentActivity?): RecyclerView.Adapter<ReferralAdapter.ReferralViewHolder>() {
+class ReferralAdapter(viewLifecycleOwner: LifecycleOwner,act: FragmentActivity?): RecyclerView.Adapter<ReferralAdapter.ReferralViewHolder>() {
 
+    private val activity = act
     private val repository = FirebaseRepository()
     private val prescriptionList = ArrayList<Referral>()
     private val lifecycle = viewLifecycleOwner
-
+    private val database = FirebaseFirestore.getInstance()
     @SuppressLint("NotifyDataSetChanged")
     fun setPrescription(list:List<Referral>){
         prescriptionList.clear()
@@ -42,6 +46,7 @@ class ReferralAdapter(viewLifecycleOwner: LifecycleOwner, act: FragmentActivity?
         val reason = holder.itemView.findViewById<TextView>(R.id.referralReasonCardViewTextView)
         val data = holder.itemView.findViewById<TextView>(R.id.referralDataCardViewTextView)
         val info = holder.itemView.findViewById<TextView>(R.id.referralInfoCardViewTextView)
+        val doneButton = holder.itemView.findViewById<Button>(R.id.doneRefferalCardViewbutton)
         val iddoc = prescriptionList[holder.adapterPosition].id_doc.toString()
         val doc = repository.getDoctorDataById(iddoc)
         doc.observe(lifecycle) { list ->
@@ -50,6 +55,13 @@ class ReferralAdapter(viewLifecycleOwner: LifecycleOwner, act: FragmentActivity?
         val pac = repository.getUserData()
         pac.observe(lifecycle){list->
             patNS.text = list.name+" "+list.surname
+        }
+        doneButton.setOnClickListener {
+            database.collection("referral").document(prescriptionList[holder.adapterPosition].id.toString()).update("done",true)
+            val myFragment = NewVisitFragment()
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.flFragment, myFragment)
+                ?.addToBackStack(null)
+                ?.commit()
         }
         reason.text = prescriptionList[holder.adapterPosition].reason
         data.text = prescriptionList[holder.adapterPosition].data

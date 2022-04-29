@@ -11,6 +11,7 @@
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/drawable/refferal_menu.xml" value="0.253" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/activity_main.xml" value="0.3484375" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/doctors_card_view.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_change_user_data.xml" value="0.1983695652173913" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_confirm_visit_register.xml" value="0.3625" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_doctor_description.xml" value="0.3625" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/fragment_new_visit.xml" value="0.3625" />
@@ -24,9 +25,12 @@
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/old_visit_card_viwe.xml" value="0.3625" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/referral_card_view.xml" value="0.3625" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/registration.xml" value="0.26358695652173914" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/set_notification_time.xml" value="0.24909420289855072" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/sure_to_delete.xml" value="0.1983695652173913" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/user_details.xml" value="0.3625" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/layout/user_main_page.xml" value="0.3625" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3625" />
+        <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.253" />
         <entry key="..\:/Users/Pszemko-PC/AndroidStudioProjects/MedicalApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1935" />
       </map>
     </option>

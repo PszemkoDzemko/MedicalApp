@@ -79,10 +79,10 @@ class DoctorDescriptionFragment(doctor: Doctor) : Fragment(R.layout.fragment_doc
         mMap = googleMap
         val geocoder = Geocoder(activity?.applicationContext)
         var addressList:List<Address>?=null
-        if (doc.localization.toString().isNotEmpty()){
-            addressList=geocoder.getFromLocationName(doc.localization,1)
+        addressList = if (doc.localization.toString().isNotEmpty()){
+            geocoder.getFromLocationName(doc.localization,1)
         }else{
-            addressList=geocoder.getFromLocationName("Polska",1)
+            geocoder.getFromLocationName("Polska",1)
         }
         val address = addressList!![0]
         val latLng = LatLng(address.latitude,address.longitude)

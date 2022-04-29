@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">Medopek</string>
     <string name="loginText">Log In</string>
     <string name="passwordHint">Password</string>
-    <string name="mailHint">E-Mail</string>
+    <string name="mailHint" translatable="false">E-Mail</string>
     <string name="buttonLogin">Log in</string>
     <string name="signinLabel">Don\'t have an account yet? Sign Up</string>
     <string name="registerLabel">Register</string>
@@ -15,26 +15,25 @@
     <string name="welcomeMessage">Welcome %1$s</string>
     <string name="logoutText">Log Out</string>
     <string name="searchHint">Search</string>
-    <string name="doctorRegisterLabel">Doctor? SignUp here</string>
     <string name="backToLogin">Back to login screen</string>
     <string name="userDetails">Add more your data</string>
-    <string name="peselHint">Pesel</string>
+    <string name="peselHint" translatable="false">Pesel</string>
     <string name="emptyError">This field cannot be empty</string>
     <string name="notSamePasswordError">Passwords are not the same</string>
     <string name="saveData">Save</string>
     <string name="cityHint">City</string>
     <string name="addressHint">Address</string>
     <string name="visitRegister">Register to Visit</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="doctorProfileImage">Doctor Profile Image</string>
     <string name="rateButton">Rate</string>
     <string name="registerToVisitButton">Register to visit</string>
     <string name="confirmData">Confirm Data</string>
     <string name="patient">Patient:</string>
     <string name="doctor">Doctor:</string>
-    <string name="specialization">Specialization</string>
-    <string name="localization">Localization</string>
-    <string name="visitDate">Visit Date</string>
+    <string name="specialization">"Specialization: "</string>
+    <string name="localization">"Localization: "</string>
+    <string name="visitDate">"Visit Date: "</string>
     <string name="confirmAndRegister">Confirm and register</string>
     <string name="newVisits">New Visits</string>
     <string name="oldVisits">Old Visits</string>
@@ -48,8 +47,8 @@
     <string name="changeTime">Change time</string>
     <string name="eReferral">E-Referral</string>
     <string name="reason">Reason:</string>
-    <string name="dateOfIssue">Date of issue:</string>
-    <string name="info">Information</string>
+    <string name="dateOfIssue">Date of issue</string>
+    <string name="info">Referral</string>
     <string name="doctorsMenu">Doctors</string>
     <string name="visitsMenu">Visits</string>
     <string name="oldVisitsMenu">Old Visits</string>
@@ -57,4 +56,14 @@
     <string name="profileMenu">Profile</string>
     <string name="opinion">" Opinions"</string>
     <string name="changesBeenSaved">Changes have been saved.</string>
+    <string name="after_30_min_notify">after 30 Minutes</string>
+    <string name="after_1_hour_notify">after 1 Hour</string>
+    <string name="after_3_hour_notify">after 3 Hour</string>
+    <string name="after_4_hour_notify">after 4 Hour</string>
+    <string name="cancel">Cancel</string>
+    <string name="choose_when_notify">Choose when you want to get notify</string>
+    <string name="doneReferral">Done</string>
+    <string name="sureToDelete">Want to delete?</string>
+    <string name="change_data">Change Data</string>
+    <string name="my_profile">My Profile</string>
 </resources>
