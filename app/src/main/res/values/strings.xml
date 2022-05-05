@@ -24,16 +24,12 @@
     <string name="cityHint">City</string>
     <string name="addressHint">Address</string>
     <string name="visitRegister">Register to Visit</string>
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="doctorProfileImage">Doctor Profile Image</string>
     <string name="rateButton">Rate</string>
     <string name="registerToVisitButton">Register to visit</string>
     <string name="confirmData">Confirm Data</string>
     <string name="patient">Patient:</string>
     <string name="doctor">Doctor:</string>
-    <string name="specialization">"Specialization: "</string>
-    <string name="localization">"Localization: "</string>
-    <string name="visitDate">"Visit Date: "</string>
     <string name="confirmAndRegister">Confirm and register</string>
     <string name="newVisits">New Visits</string>
     <string name="oldVisits">Old Visits</string>
@@ -54,7 +50,7 @@
     <string name="oldVisitsMenu">Old Visits</string>
     <string name="referralMenu">Referral</string>
     <string name="profileMenu">Profile</string>
-    <string name="opinion">" Opinions"</string>
+    <string name="opinion">Opinions</string>
     <string name="changesBeenSaved">Changes have been saved.</string>
     <string name="after_30_min_notify">after 30 Minutes</string>
     <string name="after_1_hour_notify">after 1 Hour</string>
@@ -66,4 +62,8 @@
     <string name="sureToDelete">Want to delete?</string>
     <string name="change_data">Change Data</string>
     <string name="my_profile">My Profile</string>
+    <string name="setNotification">Set notification</string>
+    <string name="specialization">Specialization:</string>
+    <string name="localization">Localization:</string>
+    <string name="visit_date">Visit Date:</string>
 </resources>

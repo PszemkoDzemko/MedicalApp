@@ -1,5 +1,6 @@
 package com.example.medicalapp.doctor
 
+import android.annotation.SuppressLint
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
@@ -36,6 +37,7 @@ class DoctorDescriptionFragment(doctor: Doctor) : Fragment(R.layout.fragment_doc
     private lateinit var rateButton: Button
     private lateinit var registerToVisitButton: Button
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         docName = view.findViewById(R.id.docDescNameLabel)
@@ -56,7 +58,7 @@ class DoctorDescriptionFragment(doctor: Doctor) : Fragment(R.layout.fragment_doc
         docName.text = doc.name
         docSurname.text = doc.surname
         docSpec.text = doc.specialization
-        nrRat.text = doc.nrRating + getString(R.string.opinion)
+        nrRat.text = doc.nrRating + " " + getString(R.string.opinion)
         val rat = doc.rating?.toFloat()!! / doc.nrRating?.toFloat()!!
         docRatingBar.rating = rat
         rateButton.setOnClickListener {
@@ -78,8 +80,7 @@ class DoctorDescriptionFragment(doctor: Doctor) : Fragment(R.layout.fragment_doc
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         val geocoder = Geocoder(activity?.applicationContext)
-        var addressList:List<Address>?=null
-        addressList = if (doc.localization.toString().isNotEmpty()){
+        val addressList:List<Address>? = if (doc.localization.toString().isNotEmpty()){
             geocoder.getFromLocationName(doc.localization,1)
         }else{
             geocoder.getFromLocationName("Polska",1)

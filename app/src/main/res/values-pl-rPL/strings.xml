@@ -26,11 +26,8 @@
     <string name="rateButton">Ocena</string>
     <string name="registerToVisitButton">Zarejestruj na wizytę</string>
     <string name="confirmData">Potwierdź dane</string>
-    <string name="patient">"Pacjent: "</string>
-    <string name="doctor">"Lekarz: "</string>
-    <string name="specialization">"Specjalizacja: "</string>
-    <string name="localization">"Lokalizacja: "</string>
-    <string name="visitDate">Data wizyty:</string>
+    <string name="patient">Pacjent:</string>
+    <string name="doctor">Lekarz:</string>
     <string name="confirmAndRegister">Potwierdź i zarejestruj</string>
     <string name="newVisits">Nowe wizyty</string>
     <string name="oldVisits">Stare wizyty</string>
@@ -63,4 +60,8 @@
     <string name="sureToDelete">Chcesz usunąć?</string>
     <string name="change_data">Zmień dane</string>
     <string name="my_profile">Mój Profil</string>
+    <string name="setNotification">Ustaw powiadomienie</string>
+    <string name="specialization">Specializacja:</string>
+    <string name="localization">Lokalizacja:</string>
+    <string name="visit_date">Data wizyty:</string>
 </resources>

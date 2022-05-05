@@ -5,11 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".doctor.ShowDoctorsFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
         <SearchView
             android:id="@+id/doctorSearchView"
             android:layout_width="match_parent"
@@ -17,13 +12,13 @@
 
         </SearchView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/doctorsRecycleView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/doctorsRecycleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="45dp"
+        android:iconifiedByDefault="false">
 
-        </androidx.recyclerview.widget.RecyclerView>
-
-    </LinearLayout>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>

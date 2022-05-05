@@ -62,11 +62,13 @@
         android:layout_marginEnd="32dp"
         android:text="@string/buttonLogin"
         android:textAlignment="center"
+        android:textColor="#000000"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordLoginForm" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordLoginForm"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/toRegisterLabel"

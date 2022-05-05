@@ -30,6 +30,9 @@ class ShowDoctorsFragment : Fragment(), OnDoctorItemClick {
             adapter.setDoctors(list)
         }
         val searchView: SearchView = view.findViewById(R.id.doctorSearchView)
+        searchView.setOnClickListener {
+            searchView.isIconified = false
+        }
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextChange(p0: String?): Boolean {
                 adapter.filter.filter(p0)
