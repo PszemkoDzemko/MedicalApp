@@ -17,7 +17,6 @@
             android:layout_marginStart="156dp"
             android:layout_marginTop="24dp"
             android:text="@string/logoutText"
-            android:textColor="#000000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/goToChangeEditProfileButton"
             tools:ignore="TextContrastCheck" />
@@ -29,7 +28,6 @@
             android:layout_marginStart="132dp"
             android:layout_marginTop="300dp"
             android:text="@string/change_data"
-            android:textColor="#000000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TextContrastCheck" />
@@ -64,6 +62,19 @@
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/nameProfileFragment"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+        <Button
+            android:id="@+id/accDeleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="176dp"
+            android:text="@string/delete_account"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoutButton"
+            tools:ignore="TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
