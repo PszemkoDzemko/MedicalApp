@@ -182,7 +182,7 @@ class NewVisitAdapter(viewLifecycleOwner: LifecycleOwner, act: FragmentActivity?
                         myYear = selectedYear
                         myMonth = selectedMonth+1
                         myDay = selectedDayOfMonth
-                        allData = "$myYear/$myMonth/$myDay"
+                        allData = "$myYear-$myMonth-$myDay"
                         database.collection("visits").document(visitList[holder.adapterPosition].id.toString()).update("data",allData)
                         val myFragment = NewVisitFragment()
                         activity.supportFragmentManager.beginTransaction()
